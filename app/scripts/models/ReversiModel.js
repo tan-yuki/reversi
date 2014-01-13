@@ -19,7 +19,9 @@
         setColor: function(color) {
             if (App.ReversiModel.validColorCode(color)) {
                 this.set('color', color);
+                return true;
             }
+            return false;
         },
 
         hasColor: function() {

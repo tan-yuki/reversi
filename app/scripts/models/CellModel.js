@@ -23,7 +23,7 @@
         },
 
         putReversi: function(color) {
-            this.reversi.setColor(color);
+            return this.reversi.setColor(color);
         },
 
         hasReversi: function() {
@@ -35,6 +35,19 @@
                 return {row: this.row, col: this.col};
             }
             return [this.row, this.col];
+        },
+
+        getColor: function() {
+            return this.reversi.getColor();
+        },
+
+        enableToPut: function(reversi) {
+            if (this.hasReversi()) {
+                return false;
+            }
+        },
+
+        getArroundCell: function() {
         }
     });
 })();

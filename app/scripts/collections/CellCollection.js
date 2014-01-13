@@ -11,7 +11,18 @@
         edge: 0,
 
         initialize: function(models, options) {
-            this.edge = options.edge;
+            var edge = this.edge = options.edge;
+            models = [];
+            for (var i = 0; i < edge; i++) {
+                for (var j = 0; j < edge; j++) {
+                    models.push(new App.CellModel({
+                        row: i,
+                        col: j
+                    }));
+                 }
+            }
+            this.setInitialReversi();
+            this.reset(models, _.extend({silent: true}, options));
         },
 
         setInitialReversi: function() {
@@ -31,15 +42,18 @@
         addReversi: function(row, col, color) {
             var cell = this.search(row, col);
             if (! cell || cell.hasReversi()) {
-                return;
+                return false;
             }
 
-            cell.putReversi(color);
+            return cell.putReversi(color);
         },
 
         /**
+         * Search cell
+         *
          * @param {Number} row Row number
          * @param {Number} col Column number
+         * 
          * @return {Object} App.CellModel
          */
         search: function(row, col) {
@@ -49,6 +63,20 @@
 
             if (models.length) return models[0];
             return null;
+        },
+
+        /**
+         * Get cells which reversi is put
+         *
+         * @param {Number} row Row number
+         * @param {Number} col Column number
+         * 
+         * @return {Object} App.CellModel
+         */
+        getCellsWithReversi: function() {
+            return this.filter(function(model) {
+                return model.hasReversi();
+            });
         }
     });
 })();

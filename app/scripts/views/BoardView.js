@@ -10,21 +10,13 @@
 
         collection: null,
 
+        edge: 0,
+
         initialize: function(options) {
             var edge = this.edge = options.edge;
-            var models = [];
-            for (var i = 0; i < edge; i++) {
-                for (var j = 0; j < edge; j++) {
-                    models.push(new App.CellModel({
-                        row: i,
-                        col: j
-                    }));
-                 }
-            }
-            this.collection = new App.CellCollection(models, {
+            this.collection = new App.CellCollection(false, {
                 edge: edge
             });
-            this.collection.setInitialReversi();
         },
 
         render: function() {
