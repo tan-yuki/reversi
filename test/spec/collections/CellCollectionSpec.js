@@ -4,46 +4,52 @@
     'use strict';
 
     var createCellCollection = function() {
-        return new App.CellCollection(false, {
-            edge: 8
-        });
     };
 
+    /**
+     * @type {App.CellCollection}
+     */
+    var collection;
+
     describe('CellCollection', function () {
+        before(function() {
+            collection = new App.CellCollection(false, {
+                edge: 8
+            });
+        });
+
         describe('#setInitialReversi', function () {
-            it('should put 4 reversi', function () {
-                var collection = createCellCollection();
+            var initCells;
+
+            before(function() {
                 collection.setInitialReversi();
+                initCells = [
+                    collection.search(3, 3),
+                    collection.search(3, 4),
+                    collection.search(4, 3),
+                    collection.search(4, 4)
+                ];
+            });
+
+            it('should put 4 reversi', function () {
                 expect(collection.getCellsWithReversi().length).to.equals(4);
             });
 
             it('should put at center on the board', function () {
-                var collection = createCellCollection();
-                collection.setInitialReversi();
-
-                var cell_1 = collection.search(3, 3);
-                var cell_2 = collection.search(3, 4);
-                var cell_3 = collection.search(4, 3);
-                var cell_4 = collection.search(4, 4);
-
-                expect(cell_1.hasReversi()).to.be.true;
-                expect(cell_2.hasReversi()).to.be.true;
-                expect(cell_3.hasReversi()).to.be.true;
-                expect(cell_4.hasReversi()).to.be.true;
+                _.each(initCells, function(cell) {
+                    expect(cell.hasReversi()).to.be.true;
+                });
             });
 
             it('should put reversies to cross diagonally', function () {
-                var collection = createCellCollection();
-                collection.setInitialReversi();
+                var c1 = initCells[0],
+                    c2 = initCells[1],
+                    c3 = initCells[2],
+                    c4 = initCells[3];
 
-                var cell_1 = collection.search(3, 3);
-                var cell_2 = collection.search(3, 4);
-                var cell_3 = collection.search(4, 3);
-                var cell_4 = collection.search(4, 4);
-
-                expect(cell_1.getColor()).to.equals(cell_4.getColor());
-                expect(cell_2.getColor()).to.equals(cell_3.getColor());
-                expect(cell_1.getColor()).not.to.equals(cell_2.getColor());
+                expect(c1.getColor()).to.equals(c4.getColor());
+                expect(c2.getColor()).to.equals(c3.getColor());
+                expect(c1.getColor()).not.to.equals(c2.getColor());
             });
         });
     });
