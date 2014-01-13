@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mocha Spec Runner</title>
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="bower_components/mocha/mocha.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="bower_components/chai/chai.js"></script>
+    <script>
+        var assert = chai.assert;
+        var expect = chai.expect;
+        var should = chai.should();
+    </script>
+
+    <!-- include source files here... -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/models/BoardModel.js"></script>
+    <script src="scripts/models/ReversiModel.js"></script>
+    <script src="scripts/collections/ReversiCollection.js"></script>
+
+    <!-- include spec files here... -->
+    <script src="spec/models/BoardModelSpec.js"></script>
+    <script src="spec/models/ReversiModelSpec.js"></script>
+    <script src="spec/collections/ReversiCollectionSpec.js"></script>
+
+    <script>mocha.run()</script>
+</body>
+</html>
