@@ -3,7 +3,7 @@
 (function() {
     'use strict';
 
-    var colorCode = App.CellModel.colorCode;
+    var colorCode = App.ReversiModel.colorCode;
 
     App.CellView = Backbone.View.extend({
         tagName: 'td',

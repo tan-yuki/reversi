@@ -100,3 +100,20 @@ body {
   border: 1px solid black;
   background-color: green;
 }
+
+.cell .reversi {
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background-color: none;
+}
+
+.cell .reversi.black {
+  background-color: black;
+}
+
+.cell .reversi.white {
+  background-color: white;
+}
