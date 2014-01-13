@@ -47,7 +47,30 @@
             }
         },
 
-        getArroundCell: function() {
+        getAroundCell: function() {
+            var arounds = [],
+                points = [
+                    [this.row - 1, this.col - 1],
+                    [this.row - 1, this.col    ],
+                    [this.row - 1, this.col + 1],
+                    [this.row    , this.col - 1],
+                    [this.row    , this.col + 1],
+                    [this.row + 1, this.col - 1],
+                    [this.row + 1, this.col    ],
+                    [this.row + 1, this.col + 1]
+                ];
+
+            // except minus point cell
+            points = _.filter(points, function(p) {
+                var row = p[0],
+                    col = p[1];
+                return row >= 0 && col >= 0;
+            });
+
+            _.each(points, _.bind(function(p) {
+                arounds.push(this.collection.search(p[0], p[1]));
+            }, this));
+            return arounds;
         }
     });
 })();
