@@ -21,8 +21,8 @@
                     }));
                  }
             }
-            this.setInitialReversi();
             this.reset(models, _.extend({silent: true}, options));
+            this.setInitialReversi();
         },
 
         setInitialReversi: function() {
