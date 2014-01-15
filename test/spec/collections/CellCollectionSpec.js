@@ -3,9 +3,6 @@
 (function () {
     'use strict';
 
-    var createCellCollection = function() {
-    };
-
     /**
      * @type {App.CellCollection}
      */

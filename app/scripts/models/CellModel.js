@@ -41,7 +41,7 @@
             return this.reversi.getColor();
         },
 
-        enableToPut: function(reversi) {
+        enableToPut: function() {
             if (this.hasReversi()) {
                 return false;
             }

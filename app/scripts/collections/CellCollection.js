@@ -19,7 +19,7 @@
                         row: i,
                         col: j
                     }));
-                 }
+                }
             }
             this.reset(models, _.extend({silent: true}, options));
             this.setInitialReversi();
@@ -61,7 +61,9 @@
                 return model.row === row && model.col === col;
             });
 
-            if (models.length) return models[0];
+            if (models.length) {
+                return models[0];
+            }
             return null;
         },
 

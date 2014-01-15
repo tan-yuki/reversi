@@ -17,7 +17,10 @@
         },
 
         setColor: function(color) {
-            if (color === this.get('color')) return true;
+            if (color === this.get('color')) {
+                return true;
+            }
+
             if (App.ReversiModel.validColorCode(color)) {
                 this.set('color', color);
                 return true;

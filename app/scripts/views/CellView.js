@@ -15,7 +15,7 @@
             'click': 'onClick'
         },
 
-        onClick: function(e) {
+        onClick: function() {
             this.model.putReversi(colorCode.black);
         },
 
