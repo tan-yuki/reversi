@@ -26,6 +26,14 @@
             return this.reversi.setColor(color);
         },
 
+        putBlackReversi: function() {
+            return this.reversi.setColor(App.ReversiModel.colorCode.black);
+        },
+
+        putWhiteReversi: function() {
+            return this.reversi.setColor(App.ReversiModel.colorCode.white);
+        },
+
         hasReversi: function() {
             return this.reversi.hasColor();
         },
