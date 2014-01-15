@@ -19,10 +19,10 @@
                         row: i,
                         col: j
                     }));
-                 }
+                }
             }
-            this.setInitialReversi();
             this.reset(models, _.extend({silent: true}, options));
+            this.setInitialReversi();
         },
 
         setInitialReversi: function() {
@@ -61,7 +61,9 @@
                 return model.row === row && model.col === col;
             });
 
-            if (models.length) return models[0];
+            if (models.length) {
+                return models[0];
+            }
             return null;
         },
 

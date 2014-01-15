@@ -9,7 +9,7 @@
 
     App.ReversiModel = Backbone.Model.extend({
         initialize: function() {
-            this.setColor(none);
+            this.set('color', none, {slient: true});
         },
 
         getColor: function() {
@@ -17,6 +17,10 @@
         },
 
         setColor: function(color) {
+            if (color === this.get('color')) {
+                return true;
+            }
+
             if (App.ReversiModel.validColorCode(color)) {
                 this.set('color', color);
                 return true;
