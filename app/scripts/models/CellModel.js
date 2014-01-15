@@ -49,10 +49,14 @@
             return this.reversi.getColor();
         },
 
-        enableToPut: function(reversi) {
-            if (this.hasReversi()) {
-                return false;
-            }
+        enableToPut: function(colorCode) {
+            var arounds = this.getAroundCell();
+            _.each(arounds, function(cell) {
+                if (cell.hasReversi()) {
+                    return true;
+                }
+            });
+            return false;
         },
 
         getAroundCell: function() {

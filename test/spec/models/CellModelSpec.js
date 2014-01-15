@@ -86,9 +86,30 @@
                     arounds = cell.getAroundCell();
                 });
 
-                it('should return 3 CellModels', function () {
+                it('should return 3 CellModels', function() {
                     expect(arounds).to.have.length(3);
                 });
+            });
+        });
+
+        describe('#enableToPut', function() {
+
+            /**
+             * @var App.CellModel
+             */
+            var cell;
+
+            before(function() {
+                cell = collection.search(3, 5);
+            });
+
+            it('should return false if there are nothing cells around this cell', function() {
+                expect(cell.enableToPut()).to.be.false;
+            });
+
+            it('should return true if there is the cell which is adjacent this cell', function() {
+                collection.setInitialReversi();
+                expect(cell.enableToPut()).to.be.true;
             });
         });
     });
