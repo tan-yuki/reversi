@@ -35,13 +35,36 @@
         },
 
         /**
+         * Add reversi.
+         * オセロを置くときのvalidation、
+         * オセロの裏返しは行わない.
+         * 
          * @param {Number} row Row number
          * @param {Number} col Column number.
          * @param {String} color Color code.
          */
         addReversi: function(row, col, color) {
             var cell = this.search(row, col);
-            if (! cell || cell.hasReversi()) {
+            if (! cell) {
+                return false;
+            }
+
+            return cell.putReversi(color, {
+                validation: false,
+                reverse: false,
+            });
+        },
+
+        /**
+         * Put reversi.
+         * 
+         * @param {Number} row Row number
+         * @param {Number} col Column number.
+         * @param {String} color Color code.
+         */
+        putReversi: function(row, col) {
+            var cell = this.search(row, col);
+            if (! cell) {
                 return false;
             }
 
@@ -68,17 +91,49 @@
         },
 
         /**
-         * Get cells which reversi is put
+         * Get cells which has reversi
          *
          * @param {Number} row Row number
          * @param {Number} col Column number
          * 
-         * @return {Object} App.CellModel
+         * @return {Array} The list of App.CellModel
          */
         getCellsWithReversi: function() {
             return this.filter(function(model) {
                 return model.hasReversi();
             });
+        },
+
+        /**
+         * Get reversies which is put on the board
+         * 
+         * @param {String} [color]
+         * @return {Array} The list of App.ReversiModel
+         */
+        getReversies: function(color) {
+            var cells = this.getCellsWithReversi();
+            var reversies = _.map(cells, function(c) {
+                return c.reversi;
+            });
+
+            if (!color) {
+                return reversies;
+            }
+
+            return _.filter(reversies, function(r) {
+                return r.getColor() === color;
+            });
+        },
+
+        /**
+         * Count reversies
+         * 
+         * @param {String} [color]
+         * @return {Integer} The count of reversies
+         */
+        countReversies: function(color) {
+            return this.getReversies(color).length;
         }
+
     });
 })();

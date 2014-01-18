@@ -4,112 +4,47 @@
     'use strict';
 
     describe('CellModel', function () {
-        var collection;
+        var collection,
+            colorCode = App.ReversiModel.colorCode,
+            black = colorCode.black,
+            white = colorCode.white;
 
-        before(function() {
-            collection = new App.CellCollection(false, {
-                edge: 8
-            });
-        });
-
-        describe('#getAroundCell', function () {
-            /**
-             * App.CellModel
-             */
-            var cell;
-
-            /**
-             * array of App.CellModel
-             */
-            var arounds;
-
-            describe('at center', function() {
-
-                before(function() {
-                    cell = collection.search(3, 3);
-                    arounds = cell.getAroundCell();
-                });
-
-                it('should return the array of CellModel', function () {
-                    expect(arounds).to.be.an('array');
-                    expect(arounds.length).to.be.greaterThan(0);
-                    _.each(arounds, function(cell) {
-                        expect(cell).to.be.instanceof(App.CellModel);
-                    });
-                });
-
-                it('should return 8 CellModels', function () {
-                    expect(arounds).to.have.length(8);
-                });
-
-                it('should return CellModels which is adjacent this cell', function () {
-                    _.each(arounds, function(c) {
-                        expect(c.row === cell.row && c.col === cell.col).to.be.false;
-                        expect(c.row -1 <= cell.row && cell.row <= c.row + 1).to.be.true;
-                        expect(c.col -1 <= cell.col && cell.col <= c.col + 1).to.be.true;
-                    });
-                });
-
-                it('should return CellModels which is unique', function () {
-                    var points = [];
-                    _.each(arounds, function(c) {
-                        var point = {row: c.row, col: c.col};
-                        _.each(points, function(p) {
-                            expect(p.row === point.row && p.col === point.col).to.be.false;
-                        });
-                        points.push(point);
-                    });
-                });
-
-                it('should return CellModels which belongs to CellCollection', function () {
-                    _.each(arounds, function(c) {
-                        expect(c.collection).to.be.instanceof(App.CellCollection);
-                    });
-                });
-            });
-
-            describe('at the edge', function() {
-
-                before(function() {
-                    cell = collection.search(0, 3);
-                    arounds = cell.getAroundCell();
-                });
-
-                it('should return 5 CellModels', function () {
-                    expect(arounds).to.have.length(5);
-                });
-            });
-
-            describe('at the corner', function() {
-                before(function() {
-                    cell = collection.search(0, 0);
-                    arounds = cell.getAroundCell();
-                });
-
-                it('should return 3 CellModels', function() {
-                    expect(arounds).to.have.length(3);
-                });
-            });
-        });
-
-        describe('#enableToPut', function() {
-
-            /**
-             * @var App.CellModel
-             */
-            var cell;
-
+        describe('#putReversi', function() {
             before(function() {
-                cell = collection.search(3, 5);
-            });
-
-            it('should return false if there are nothing cells around this cell', function() {
-                expect(cell.enableToPut()).to.be.false;
-            });
-
-            it('should return true if there is the cell which is adjacent this cell', function() {
+                // Initialize
+                collection = new App.CellCollection(false, {
+                    edge: 8
+                });
                 collection.setInitialReversi();
-                expect(cell.enableToPut()).to.be.true;
+            });
+
+            it('should return false if this cell has reversi already', function() {
+                var cell = collection.search(3, 3);
+                var oldCount = collection.countReversies();
+                expect(cell.putReversi(black)).to.be.false;
+                expect(collection.countReversies()).to.be.equals(oldCount);
+            });
+
+            it('should return false if there are no cells around this cell', function() {
+                var cell = collection.search(1, 1);
+                var oldCount = collection.countReversies();
+                expect(cell.putReversi(black)).to.be.false;
+                expect(collection.countReversies()).to.be.equals(oldCount);
+            });
+
+            it('should return false if there is no eversible reversi', function() {
+                var cell = collection.search(3, 5);
+                var oldCount = collection.countReversies();
+                expect(cell.putReversi(white)).to.be.false;
+                expect(collection.countReversies()).to.be.equals(oldCount);
+            });
+
+            it('should return true if there is eversible reversi', function() {
+                var cell = collection.search(3, 5);
+                var oldCount = collection.countReversies();
+                expect(cell.putReversi(black)).to.be.true;
+                expect(collection.countReversies()).to.be.equals(5);
+                expect(collection.countReversies(black)).to.be.equals(4);
             });
         });
     });

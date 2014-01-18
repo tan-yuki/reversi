@@ -15,8 +15,10 @@
             'click': 'onClick'
         },
 
-        onClick: function() {
-            this.model.putReversi(colorCode.black);
+        onClick: function(e) {
+            e.stopPropagation();
+            var color = $('input[name=color]:checked').val();
+            this.model.putReversi(color);
         },
 
         render: function() {
