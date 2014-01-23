@@ -56,6 +56,34 @@
         },
 
         /**
+         * Return true if there is no cell to put reversi.
+         * 
+         * @return {Boolean}
+         */
+        isFullReversi: function() {
+            return this.countReversies() === this.edge * this.edge;
+        },
+
+        /**
+         * Return true if there is only one color.
+         * 
+         * @return {Boolean}
+         */
+        isOnlyColor: function() {
+            return this.isOnly(colorCode.black) || this.isOnly(colorCode.white);
+        },
+
+        /**
+         * Return true if there is only one color.
+         * 
+         * @param {String} color
+         * @return {Boolean}
+         */
+        isOnly: function(color) {
+            return this.countReversies(color) === this.countReversies();
+        },
+
+        /**
          * Put reversi.
          * 
          * @param {Number} row Row number
@@ -93,9 +121,6 @@
         /**
          * Get cells which has reversi
          *
-         * @param {Number} row Row number
-         * @param {Number} col Column number
-         * 
          * @return {Array} The list of App.CellModel
          */
         getCellsWithReversi: function() {
@@ -133,6 +158,22 @@
          */
         countReversies: function(color) {
             return this.getReversies(color).length;
+        },
+
+        /**
+         * Return cells on which we can put reversi.
+         * 
+         * @param {String} color
+         * @return {Array} List of App.CellModel
+         */
+        getPutableReversiCells: function(color) {
+            return this.filter(function(cell) {
+                return cell.canPutReversi(color);
+            });
+        },
+
+        countPutableCells: function(color) {
+            return this.getPutableReversiCells(color).length;
         }
 
     });

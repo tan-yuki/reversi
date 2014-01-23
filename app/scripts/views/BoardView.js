@@ -12,10 +12,15 @@
 
         edge: 0,
 
+        cpu: null,
+
         initialize: function(options) {
             var edge = this.edge = options.edge;
             this.collection = new App.CellCollection(false, {
                 edge: edge
+            });
+            this.cpu = new App.CPUModel({
+                collection: this.collection
             });
         },
 
@@ -27,7 +32,8 @@
                     cells = [];
                 for (var j = 0; j < edge; j++) {
                     var view = new App.CellView({
-                        model: this.collection.search(i, j)
+                        model: this.collection.search(j, i),
+                        cpu: this.cpu
                     });
                     cells.push(view.render().$el);
                 }

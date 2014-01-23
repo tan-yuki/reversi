@@ -47,5 +47,35 @@
                 expect(collection.countReversies(black)).to.be.equals(4);
             });
         });
+
+        describe('#canPutReversi', function() {
+            before(function() {
+                // Initialize
+                collection = new App.CellCollection(false, {
+                    edge: 8
+                });
+                collection.setInitialReversi();
+            });
+
+            it('should return false if this cell has reversi already', function() {
+                var cell = collection.search(3, 3);
+                expect(cell.canPutReversi(black)).to.be.false;
+            });
+
+            it('should return false if there are no cells around this cell', function() {
+                var cell = collection.search(1, 1);
+                expect(cell.canPutReversi(black)).to.be.false;
+            });
+
+            it('should return false if there is no eversible reversi', function() {
+                var cell = collection.search(3, 5);
+                expect(cell.canPutReversi(white)).to.be.false;
+            });
+
+            it('should return true if there is eversible reversi', function() {
+                var cell = collection.search(3, 5);
+                expect(cell.canPutReversi(black)).to.be.true;
+            });
+        });
     });
 })();

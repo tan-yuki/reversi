@@ -8,6 +8,8 @@
      */
     var collection;
 
+    var colorCode = App.ReversiModel.colorCode;
+
     describe('CellCollection', function () {
         before(function() {
             collection = new App.CellCollection(false, {
@@ -47,6 +49,60 @@
                 expect(c1.getColor()).to.equals(c4.getColor());
                 expect(c2.getColor()).to.equals(c3.getColor());
                 expect(c1.getColor()).not.to.equals(c2.getColor());
+            });
+        });
+
+        describe('#getPutableReversiCells', function () {
+            describe('when first placement of reversi,', function () {
+                before(function() {
+                    collection.setInitialReversi();
+                });
+                it('return 4 cells if you try to put black reversi', function () {
+                    var cells = collection.getPutableReversiCells(colorCode.black);
+                    expect(cells).to.have.length(4);
+                    _.each(cells, function(c) {
+                        switch (c.row) {
+                        case 2:
+                            expect(c.col).to.equals(4);
+                            break;
+                        case 3:
+                            expect(c.col).to.equals(5);
+                            break;
+                        case 4:
+                            expect(c.col).to.equals(2);
+                            break;
+                        case 5:
+                            expect(c.col).to.equals(3);
+                            break;
+                        default:
+                            // failed
+                            expect(true).to.be.false;
+                        }
+                    });
+                });
+                it('return 4 cells if you try to put white reversi', function () {
+                    var cells = collection.getPutableReversiCells(colorCode.white);
+                    expect(cells).to.have.length(4);
+                    _.each(cells, function(c) {
+                        switch (c.row) {
+                        case 2:
+                            expect(c.col).to.equals(3);
+                            break;
+                        case 3:
+                            expect(c.col).to.equals(2);
+                            break;
+                        case 4:
+                            expect(c.col).to.equals(5);
+                            break;
+                        case 5:
+                            expect(c.col).to.equals(4);
+                            break;
+                        default:
+                            // failed
+                            expect(true).to.be.false;
+                        }
+                    });
+                });
             });
         });
     });

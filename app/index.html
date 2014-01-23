@@ -26,10 +26,13 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main">
-        </div>
-        <div id="settings">
-            <input type="radio" name="color" value="black" checked>black
-            <input type="radio" name="color" value="white">white
+            <div id="board">
+            </div>
+            <div id="settings">
+                <input type="radio" name="level" value="easy" checked>easy
+                <input type="radio" name="level" value="normal" disabled>normal
+                <input type="radio" name="level" value="hard" disabled>hard
+            </div>
         </div>
 
         <!-- build:js scripts/vendor.js -->
@@ -53,12 +56,19 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/models/CPUStrategy/StrategyModel.js"></script>
+        <script src="scripts/models/CPUStrategy/EasyStrategyModel.js"></script>
+        <script src="scripts/models/CPUStrategy/HardStrategyModel.js"></script>
+        <script src="scripts/models/CPUStrategy/NormalStrategyModel.js"></script>
+        <script src="scripts/models/CPUModel.js"></script>
         <script src="scripts/models/ReversiModel.js"></script>
         <script src="scripts/models/CellModel.js"></script>
         <script src="scripts/collections/CellCollection.js"></script>
         <script src="scripts/views/ReversiView.js"></script>
         <script src="scripts/views/CellView.js"></script>
         <script src="scripts/views/BoardView.js"></script>
+        <script src="scripts/views/SettingView.js"></script>
+        <script src="scripts/views/AppView.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 

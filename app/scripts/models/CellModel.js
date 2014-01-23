@@ -38,10 +38,13 @@
                 reverse: true,
             }, options);
 
-            if (options.validation) {
-                if (this.hasReversi()) {
-                    return false;
-                }
+            console.log('Set reversi ' +
+                '(row, col) = (' + this.row + ',' + this.col + ') ' +
+                'color:' + color);
+
+
+            if (options.validation && this.hasReversi()) {
+                return false;
             }
 
             if (options.reverse) {
@@ -132,40 +135,91 @@
             var reversedCount = 0;
             for (var i = 0, len = vectors.length; i < len; i++) {
                 var v = vectors[i];
-                if (this.canReverse(this, v, color)) {
-                    reversedCount += this.toggleRecursively(this, v, color);
+                if (this.countReverseToVector(v, color) > 0) {
+                    reversedCount += this.toggleRecursively(v, color);
                 }
             }
             return reversedCount > 0;
         },
 
         /**
+         * 裏返せるオセロの数を返す
+         * 
+         * @method countReverse
+         * @param {String} color
+         * @return {Integer}
+         */
+        countReverse: function(color) {
+            var vectors = [
+                {row: -1, col: -1},
+                {row: -1, col:  0},
+                {row: -1, col:  1},
+                {row:  0, col: -1},
+                {row:  0, col:  1},
+                {row:  1, col: -1},
+                {row:  1, col:  0},
+                {row:  1, col:  1}
+            ];
+
+            var count = 0;
+            for (var i = 0, len = vectors.length; i < len; i++) {
+                var v = vectors[i];
+                count += this.countReverseToVector(v, color);
+            }
+            return count;
+        },
+
+        /**
+         * Return true if we cann put reversi on this cell.
+         * 
+         * @method canPutReversi
+         * @param {String} color
+         * @return {Boolean}
+         */
+        canPutReversi: function(color) {
+            return (!this.hasReversi()) && (this.countReverse(color) > 0);
+        },
+
+        /**
          * 渡されたcellの位置からvector方向へ
-         * 裏返せるオセロがあるか調べる.
+         * 裏返せるオセロがいくつあるか調べる
          *
          * @private
          * @method canReverse
-         * @param {App.CellModel} cell
          * @param {Object} vector Vector to reverse
          *   @param {int} row x-axis Vactor (-1 or 0 or 1)
          *   @param {int} col y-axis Vactor (-1 or 0 or 1)
          * @param {String} color プレイヤーが置いたオセロの色
+         * @return {Integer}
+         *   裏返せるオセロの数
          */
-        canReverse: function(cell, vector, color) {
-            var row = cell.row + vector.row;
-            var col = cell.col + vector.col;
-            var cell = this.collection.search(row, col);
+        countReverseToVector: function(vector, color) {
+            var canReverse = true;
 
-            if (!cell) {
+            var _countReverse = _.bind(function(cell, vector, color) {
+                var row = cell.row + vector.row;
+                var col = cell.col + vector.col;
+                var cell = this.collection.search(row, col);
+
+                if (!cell) {
+                    canReverse = false;
+                    return 0;
+                }
+                if (!cell.hasReversi()) {
+                    canReverse = false;
+                    return 0;
+                }
+                if (cell.reversi.hasDifferentColor(color)) {
+                    return 1 + _countReverse(cell, vector, color);
+                }
+                return 0;
+            }, this);
+
+            var count = _countReverse(this, vector, color);
+            if (!canReverse) {
                 return false;
             }
-            if (!cell.hasReversi()) {
-                return false;
-            }
-            if (cell.reversi.hasDifferentColor(color)) {
-                return this.canReverse(cell, vector, color);
-            }
-            return true;
+            return count;
         },
 
         /**
@@ -174,23 +228,30 @@
          *
          * @private
          * @method toggleRecursively
-         * @param {App.CellModel} cell
          * @param {Object} vector Vector to reverse
          *   @param {int} row x-axis Vactor (-1 or 0 or 1)
          *   @param {int} col y-axis Vactor (-1 or 0 or 1)
          * @param {String} color プレイヤーが置いたオセロの色
          * @reutrn {Integer} 裏返したオセロの数
          */
-        toggleRecursively: function(cell, vector, color) {
-            var row = cell.row + vector.row;
-            var col = cell.col + vector.col;
-            var cell = this.collection.search(row, col);
+        toggleRecursively: function(vector, color) {
+            var _toggleRecursively = _.bind(function(cell, vector, color) {
+                var row = cell.row + vector.row;
+                var col = cell.col + vector.col;
+                var cell = this.collection.search(row, col);
 
-            if (cell && cell.hasReversi() && cell.reversi.hasDifferentColor(color)) {
-                cell.reversi.toggle();
-                return 1 + this.toggleRecursively(cell, vector, color);
-            }
-            return 0;
+                if (cell && cell.hasReversi() && cell.reversi.hasDifferentColor(color)) {
+                    cell.reversi.toggle();
+                    return 1 + _toggleRecursively(cell, vector, color);
+                }
+                return 0;
+            }, this);
+
+            return _toggleRecursively(this, vector, color);
+        },
+
+        toString: function() {
+            return '(row, col) = (' + this.row + ',' + this.col + ')';
         }
     });
 })();
