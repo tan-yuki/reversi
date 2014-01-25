@@ -1,4 +1,4 @@
-/* global App */
+/* global App,alert */
 
 (function() {
     'use strict';
@@ -117,6 +117,7 @@
         },
 
         cannotContinueGame: function() {
+            var collection = this.model.collection;
             var endGame = function(result) {
                 var msg =
                     'オセロが一色のみになったのでゲームを終了します。\n' +

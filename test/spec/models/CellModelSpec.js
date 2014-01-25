@@ -41,7 +41,6 @@
 
             it('should return true if there is eversible reversi', function() {
                 var cell = collection.search(3, 5);
-                var oldCount = collection.countReversies();
                 expect(cell.putReversi(black)).to.be.true;
                 expect(collection.countReversies()).to.be.equals(5);
                 expect(collection.countReversies(black)).to.be.equals(4);

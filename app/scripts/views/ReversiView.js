@@ -18,12 +18,6 @@
             }
             this.$el.addClass(this.className);
             return this;
-        },
-
-        renderCandidate: function() {
-            if (this.model.cell.isCandidate(playerColor)) {
-                this.$el.append('<div class="candidate"></div>');
-            }
         }
     });
 })();

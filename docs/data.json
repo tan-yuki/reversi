@@ -1,0 +1,1432 @@
+{
+    "project": {
+        "name": "reversi-with-backbone",
+        "description": "Reversi game built with Backbone javascript framework",
+        "version": "1.1.1",
+        "url": "https://github.com/tan-yuki/reversi"
+    },
+    "files": {
+        "app/scripts/collections/CellCollection.js": {
+            "name": "app/scripts/collections/CellCollection.js",
+            "modules": {},
+            "classes": {
+                "App.CellCollection": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "App": 1
+            }
+        },
+        "app/scripts/models/CPUStrategy/EasyStrategyModel.js": {
+            "name": "app/scripts/models/CPUStrategy/EasyStrategyModel.js",
+            "modules": {},
+            "classes": {
+                "App.CPUStrategy.EasyStrategyModel": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "App.CPUStrategy": 1
+            }
+        },
+        "app/scripts/models/CPUStrategy/StrategyModel.js": {
+            "name": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "modules": {},
+            "classes": {
+                "App.Strategy": 1,
+                "App.CPUStrategy.StrategyModel": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "App": 1,
+                "App.CPUStrategy": 1
+            }
+        },
+        "app/scripts/models/CPUModel.js": {
+            "name": "app/scripts/models/CPUModel.js",
+            "modules": {},
+            "classes": {
+                "App.CPUModel": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "App": 1
+            }
+        },
+        "app/scripts/models/CellModel.js": {
+            "name": "app/scripts/models/CellModel.js",
+            "modules": {},
+            "classes": {
+                "App.CellModel": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/scripts/models/ReversiModel.js": {
+            "name": "app/scripts/models/ReversiModel.js",
+            "modules": {},
+            "classes": {
+                "App.ReversiModel": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "App": 1
+            }
+        },
+        "app/scripts/app.js": {
+            "name": "app/scripts/app.js",
+            "modules": {
+                "App": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/scripts/main.js": {
+            "name": "app/scripts/main.js",
+            "modules": {
+                "App.exports": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "App": {
+            "name": "App",
+            "submodules": {},
+            "classes": {
+                "App.CellCollection": 1,
+                "App.CPUStrategy.EasyStrategyModel": 1,
+                "App.Strategy": 1,
+                "App.CPUStrategy.StrategyModel": 1,
+                "App.CPUModel": 1,
+                "App.CellModel": 1,
+                "App.ReversiModel": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 10
+        },
+        "App.exports": {
+            "name": "App.exports",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "app/scripts/main.js",
+            "line": 6
+        }
+    },
+    "classes": {
+        "App.CellCollection": {
+            "name": "App.CellCollection",
+            "shortname": "App.CellCollection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App",
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 8,
+            "extends": "Backbone.Collection"
+        },
+        "App.CPUStrategy.EasyStrategyModel": {
+            "name": "App.CPUStrategy.EasyStrategyModel",
+            "shortname": "App.CPUStrategy.EasyStrategyModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App.CPUStrategy",
+            "file": "app/scripts/models/CPUStrategy/EasyStrategyModel.js",
+            "line": 6,
+            "extends": "App.CPUStrategy.StrategyModel"
+        },
+        "App.Strategy": {
+            "name": "App.Strategy",
+            "shortname": "App.Strategy",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App",
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 8,
+            "access": "private",
+            "tagname": "",
+            "extends": "Backbone.Model"
+        },
+        "App.CPUStrategy.StrategyModel": {
+            "name": "App.CPUStrategy.StrategyModel",
+            "shortname": "App.CPUStrategy.StrategyModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App.CPUStrategy",
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 229,
+            "extends": "Backbone.Model"
+        },
+        "App.CPUModel": {
+            "name": "App.CPUModel",
+            "shortname": "App.CPUModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App",
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 19,
+            "extends": "Backbone.Model"
+        },
+        "App.CellModel": {
+            "name": "App.CellModel",
+            "shortname": "CellModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App",
+            "file": "app/scripts/models/CellModel.js",
+            "line": 6,
+            "extends": "Backbone.Model"
+        },
+        "App.ReversiModel": {
+            "name": "App.ReversiModel",
+            "shortname": "App.ReversiModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "App",
+            "namespace": "App",
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 10,
+            "extends": "Backbone.Model"
+        }
+    },
+    "classitems": [
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 15,
+            "itemtype": "property",
+            "name": "model",
+            "type": "App.CellModel",
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 21,
+            "description": "The count of edge cells.",
+            "itemtype": "property",
+            "name": "edge",
+            "type": "Integer",
+            "default": "0",
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 30,
+            "is_constructor": 1,
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 48,
+            "description": "Set initialize revesies.",
+            "itemtype": "method",
+            "name": "setInitializeReversi",
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 61,
+            "description": "Add reversi.\nオセロを置くときのvalidation、\nオセロの裏返しは行わない.",
+            "itemtype": "method",
+            "name": "addReversi",
+            "params": [
+                {
+                    "name": "row",
+                    "description": "Row index.",
+                    "type": "Integer"
+                },
+                {
+                    "name": "col",
+                    "description": "Column index.",
+                    "type": "Integer"
+                },
+                {
+                    "name": "color",
+                    "description": "Color code.",
+                    "type": "String"
+                }
+            ],
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 83,
+            "description": "Put reversi.",
+            "itemtype": "method",
+            "name": "putReversi",
+            "params": [
+                {
+                    "name": "row",
+                    "description": "Row number",
+                    "type": "Number"
+                },
+                {
+                    "name": "col",
+                    "description": "Column number.",
+                    "type": "Number"
+                },
+                {
+                    "name": "color",
+                    "description": "Color code.",
+                    "type": "String"
+                }
+            ],
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 100,
+            "description": "Return true if there is no cell to put reversi.",
+            "itemtype": "method",
+            "name": "isFullReversi",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 110,
+            "description": "Return true if there is only one color.",
+            "itemtype": "method",
+            "name": "isOnlyColor",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 120,
+            "description": "Return true if there is only one color.",
+            "itemtype": "method",
+            "name": "isOnly",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 131,
+            "description": "Search cell",
+            "itemtype": "method",
+            "name": "search",
+            "params": [
+                {
+                    "name": "row",
+                    "description": "Row index",
+                    "type": "Integer"
+                },
+                {
+                    "name": "col",
+                    "description": "Column index",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "App.CellModel"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 152,
+            "description": "Get cells which has reversi",
+            "itemtype": "method",
+            "name": "getCellsPuttingReversi",
+            "return": {
+                "description": "\n  The list of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
+                "type": "Array"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 165,
+            "description": "Get reversies which is put on the board",
+            "itemtype": "method",
+            "name": "getReversies",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "The color code",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "\n  The list of {{#crossLink \"App.ReversiModel\"}}{{/crossLink}}",
+                "type": "Array"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 188,
+            "description": "Count reversies already put on the board.",
+            "itemtype": "method",
+            "name": "countReversies",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "The count of reversies",
+                "type": "Integer"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 199,
+            "description": "Return cells on which we can put reversi.",
+            "itemtype": "method",
+            "name": "getCandidates",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "\n  The list of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
+                "type": "Array"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/collections/CellCollection.js",
+            "line": 213,
+            "description": "Return the count of cells on which we can put reversi.",
+            "itemtype": "method",
+            "name": "countCandidates",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The number of candidates.",
+                "type": "Integer"
+            },
+            "class": "App.CellCollection",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 16,
+            "description": "Cells that cpu can put.\nThis is the list of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
+            "type": "Array",
+            "itemtype": "property",
+            "name": "cells",
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 25,
+            "description": "The reversi color.",
+            "type": "String",
+            "itemtype": "property",
+            "name": "color",
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 33,
+            "description": "Cell Collections.",
+            "type": "App.CellCollection",
+            "itemtype": "property",
+            "name": "collection",
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 41,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Optional Data.",
+                    "props": [
+                        {
+                            "name": "cells",
+                            "description": "\n    This is array of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "color",
+                            "description": "\n    This is array of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
+                            "type": "String"
+                        },
+                        {
+                            "name": "collection",
+                            "description": "\n    This is the collection of Cells.",
+                            "type": "App.CellCollection"
+                        }
+                    ]
+                }
+            ],
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 59,
+            "description": "Select cells according to the strategies\n    \n    var stragegy = new Strategy({\n        cells: cells,\n        color: color\n    });\n    var cell = strategy.select([\n        strategy.mostReversable,\n        strategy.edge\n    ]);",
+            "itemtype": "method",
+            "name": "select",
+            "params": [
+                {
+                    "name": "!~YUIDOC_LINE~!",
+                    "description": "The list of this strategy functions",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "App.CellModel"
+            },
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 106,
+            "description": "Choose cells which is not placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
+            "itemtype": "method",
+            "name": "notEdge",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 120,
+            "description": "Choose cells which is placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
+            "itemtype": "method",
+            "name": "edge",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 134,
+            "description": "Choose cells which is placed at corner.\nSee {{#crossLink \"App.CellModel/isCorner:method\"}}",
+            "itemtype": "method",
+            "name": "corner",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 148,
+            "description": "Choose cells which is placed around corner.\nSee {{#crossLink \"App.CellModel/isAroundCorner:method\"}}",
+            "itemtype": "method",
+            "name": "aroundCorner",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 162,
+            "description": "Create reversi map.\n\n以下の様なObjectを返す。\n- key: オセロを裏返す数\n- value: CellModelの配列",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "aroundCorner",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 186,
+            "description": "Choose most reversiable cells",
+            "itemtype": "method",
+            "name": "mostReversable",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 200,
+            "description": "Choose most reversiable cells",
+            "itemtype": "method",
+            "name": "leastReversable",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 214,
+            "description": "Choose start position cell.\nSee {{#crossLink \"App.CellModel/isStarPosition:method\"}}",
+            "itemtype": "method",
+            "name": "starPosition",
+            "chainable": 1,
+            "class": "App.Strategy",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 236,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "collection",
+                    "description": "",
+                    "type": "App.Collection.CellCollection"
+                }
+            ],
+            "class": "App.CPUStrategy.StrategyModel",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 245,
+            "description": "Select cell which CPU put reversi\n\n__caution__: This method should be implemented in the child class.",
+            "itemtype": "method",
+            "name": "selectCell",
+            "params": [
+                {
+                    "name": "color!~YUIDOC_LINE~!",
+                    "description": "The color code of CPU's reversi.",
+                    "type": "String"
+                },
+                {
+                    "name": "cells!~YUIDOC_LINE~!",
+                    "description": "The list of App.CellModel\n  which CPU can put reversi.",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "\n  The cell CPU put reversi.",
+                "type": "App.CellModel"
+            },
+            "class": "App.CPUStrategy.StrategyModel",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 264,
+            "description": "Put reversi",
+            "itemtype": "method",
+            "name": "putReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Success or not",
+                "type": "Boolean"
+            },
+            "class": "App.CPUStrategy.StrategyModel",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 285,
+            "description": "Create new stragety.\n    \n    var strategy = this.strategy;\n    var cell = strategy.select([\n        strategy.edge,\n        strategy.mostReversable\n    ]);",
+            "itemtype": "method",
+            "name": "stragegy",
+            "params": [
+                {
+                    "name": "color!~YUIDOC_LINE~!",
+                    "description": "The color code of CPU's reversi.",
+                    "type": "String"
+                },
+                {
+                    "name": "cells!~YUIDOC_LINE~!",
+                    "description": "The list of App.CellModel\n  which CPU can put reversi.",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Strategy"
+            },
+            "class": "App.CPUStrategy.StrategyModel",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 8,
+            "description": "Levels for this CPU",
+            "type": "Array",
+            "class": "App.CPUModel",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 26,
+            "description": "List of App.CPUStrategy.Strategy",
+            "access": "private",
+            "tagname": "",
+            "type": "{Array}",
+            "itemtype": "property",
+            "name": "strategies",
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 35,
+            "description": "Current selected strategy.",
+            "access": "private",
+            "tagname": "",
+            "type": "{App.CPUStrategy.Strategy}",
+            "itemtype": "property",
+            "name": "strategy",
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 57,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "collection",
+                    "description": "",
+                    "type": "App.Collection.CellCollection"
+                }
+            ],
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 76,
+            "description": "Put CPU reversi",
+            "itemtype": "method",
+            "name": "putReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 86,
+            "description": "Set CPU level",
+            "itemtype": "method",
+            "name": "setLevel",
+            "params": [
+                {
+                    "name": "level",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CPUModel.js",
+            "line": 97,
+            "description": "Return CPU strategy",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getStrategy",
+            "return": {
+                "description": "",
+                "type": "App.CPUStrategy.StrategyModel"
+            },
+            "class": "App.CPUModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 12,
+            "description": "Row index",
+            "type": "{Integer}",
+            "itemtype": "property",
+            "name": "row",
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 20,
+            "description": "Column index",
+            "type": "{Integer}",
+            "itemtype": "property",
+            "name": "col",
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 28,
+            "description": "Reversi model",
+            "type": "{App.RevesiModel}",
+            "itemtype": "property",
+            "name": "reversi",
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 36,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "row",
+                    "description": "Row index",
+                    "type": "Integer"
+                },
+                {
+                    "name": "col",
+                    "description": "Column index",
+                    "type": "Integer"
+                }
+            ],
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 56,
+            "description": "Put reversi in this cell.",
+            "itemtype": "method",
+            "name": "putReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "Optional data",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "validation",
+                            "description": "If you don't need validation, set false.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "reverse",
+                            "description": "If you don't need to reverse other reversi, set false.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "true"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Success or not",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 92,
+            "description": "Put black reversi in this cell.",
+            "itemtype": "method",
+            "name": "putBlackReversi",
+            "return": {
+                "description": "Success or not",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 102,
+            "description": "Put white reversi in this cell.",
+            "itemtype": "method",
+            "name": "putWhiteReversi",
+            "return": {
+                "description": "Success or not",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 112,
+            "description": "Return true if this cell has reversi.",
+            "itemtype": "method",
+            "name": "hasReversi",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 122,
+            "description": "Return this cell's row and col data.\n\n    var cell = this.collection.search(3, 5);\n    var point = cell.getPoint();\n    point[0]; // 3\n    point[1]; // 5\n\n    var point = cell.getPoint(true);\n    point.row; // 3\n    point.col; // 5",
+            "itemtype": "method",
+            "name": "getPoint",
+            "params": [
+                {
+                    "name": "toObj",
+                    "description": "If true, return as object.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "This cell's point.",
+                "type": "Array|Object"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 145,
+            "description": "Return this cell's reversi color.",
+            "itemtype": "method",
+            "name": "getColor",
+            "return": {
+                "description": "Color code.",
+                "type": "String"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 155,
+            "description": "Reverse other reversi",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "reverse",
+            "params": [
+                {
+                    "name": "Put",
+                    "description": "reversi color",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "裏返せたオセロが一つでもあった場合はtrueを返す",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 185,
+            "description": "裏返せるオセロの数を返す",
+            "itemtype": "method",
+            "name": "countReverse",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Integer"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 212,
+            "description": "Return true if we cann put reversi on this cell.",
+            "itemtype": "method",
+            "name": "canPutReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 223,
+            "description": "渡されたcellの位置からvector方向へ\n裏返せるオセロがいくつあるか調べる",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "canReverse",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "Vector to reverse",
+                    "type": "Object"
+                },
+                {
+                    "name": "row",
+                    "description": "x-axis Vactor (-1 or 0 or 1)",
+                    "type": "Int"
+                },
+                {
+                    "name": "col",
+                    "description": "y-axis Vactor (-1 or 0 or 1)",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "プレイヤーが置いたオセロの色",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "\n  裏返せるオセロの数",
+                "type": "Integer"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 265,
+            "description": "渡されたcellの位置からvector方向へ\n裏返しを行う",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "toggleRecursively",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "Vector to reverse",
+                    "type": "Object"
+                },
+                {
+                    "name": "row",
+                    "description": "x-axis Vactor (-1 or 0 or 1)",
+                    "type": "Int"
+                },
+                {
+                    "name": "col",
+                    "description": "y-axis Vactor (-1 or 0 or 1)",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "プレイヤーが置いたオセロの色",
+                    "type": "String"
+                }
+            ],
+            "reutrn": "{Integer} 裏返したオセロの数",
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 293,
+            "description": "Return true if this cell can put this color reversi.",
+            "itemtype": "method",
+            "name": "isCandidate",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 305,
+            "description": "Return true if this cell is placed at edge.\nEdge position is below 'x' marked position.\n\n     -----------------------\n    | x | x | x | x | x | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x | x | x | x | x | x |\n     -----------------------",
+            "itemtype": "method",
+            "name": "isEdge",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 335,
+            "description": "Return true if this cell is placed at corner.\nCorner position is below 'x' marked position.\n\n     -----------------------\n    | x |   |   |   |   | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x |   |   |   |   | x |\n     -----------------------",
+            "itemtype": "method",
+            "name": "isCorner",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 364,
+            "description": "Return true if this cell is placesd at around corner.\nAround corner position is below 'x' marked position.\n\n     -----------------------\n    |   | x |   |   | x |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   | x |   |   | x |   |\n     -----------------------",
+            "itemtype": "method",
+            "name": "isAroundCorner",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 406,
+            "description": "Return true if this cell is placesd at diagonal corner.\nStart position is below 'x' marked position.\n\n     -----------------------\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n     -----------------------",
+            "itemtype": "method",
+            "name": "isStarPosition",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/CellModel.js",
+            "line": 435,
+            "description": "Return this cell's (row, col)\n\n    var cell = this.collection.search(3, 5);\n    cell.toString() // '(row, col) = (3, 5)'",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "App.CellModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 17,
+            "description": "The cell on which this reversi put",
+            "type": "{App.CellModel}",
+            "itemtype": "property",
+            "name": "cell",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 25,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "CellModel",
+                    "description": "",
+                    "type": "App.CellModel"
+                }
+            ],
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 35,
+            "description": "Return color code.",
+            "itemtype": "method",
+            "name": "getColor",
+            "return": {
+                "description": "Color code",
+                "type": "String"
+            },
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 45,
+            "description": "Set color code.",
+            "itemtype": "method",
+            "name": "setColor",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color code",
+                    "type": "String"
+                }
+            ],
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 63,
+            "description": "Return true if this reversi has this color.\n\nIf there is no arguments, Return true \nif this reversi has some color.",
+            "itemtype": "method",
+            "name": "hasColor",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color code",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 79,
+            "description": "Set opposite color",
+            "itemtype": "method",
+            "name": "toggle",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 94,
+            "description": "Return true if this reversi \nis different color from this arguments.",
+            "itemtype": "method",
+            "name": "hasDifferentColor",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color code",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 113,
+            "description": "Return true if this color is valid.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "validColr",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 125,
+            "description": "Color codes",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 130,
+            "description": "Black color code.",
+            "static": 1,
+            "itemtype": "property",
+            "name": "black",
+            "type": "String",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 139,
+            "description": "White color code.",
+            "static": 1,
+            "itemtype": "property",
+            "name": "white",
+            "type": "String",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/models/ReversiModel.js",
+            "line": 148,
+            "description": "None color code.",
+            "static": 1,
+            "itemtype": "property",
+            "name": "none",
+            "type": "String",
+            "class": "App.ReversiModel",
+            "namespace": "App"
+        },
+        {
+            "file": "app/scripts/main.js",
+            "line": 14,
+            "itemtype": "property",
+            "name": "view",
+            "type": "App.AppView",
+            "class": "",
+            "module": "App.exports"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: reutrn",
+            "line": " app/scripts/models/CellModel.js:265"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/collections/CellCollection.js:30"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:41"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:236"
+        },
+        {
+            "message": "Missing item type\nLevels for this CPU",
+            "line": " app/scripts/models/CPUModel.js:8"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/models/CPUModel.js:57"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/models/CellModel.js:36"
+        },
+        {
+            "message": "Missing item type",
+            "line": " app/scripts/models/ReversiModel.js:25"
+        },
+        {
+            "message": "Missing item type\nColor codes",
+            "line": " app/scripts/models/ReversiModel.js:125"
+        }
+    ]
+}

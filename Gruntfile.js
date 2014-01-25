@@ -18,6 +18,8 @@ module.exports = function (grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig({
 
+        pkg: grunt.file.readJSON('package.json'),
+
         // Project settings
         yeoman: {
             // Configurable paths
@@ -29,7 +31,7 @@ module.exports = function (grunt) {
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             js: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+                files: ['<%= yeoman.app %>/scripts/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true
@@ -37,7 +39,7 @@ module.exports = function (grunt) {
             },
             jstest: {
                 files: [
-                    'test/spec/{,*/}*.js',
+                    'test/spec/**/*.js',
                     'test/index.html'
                 ],
                 tasks: ['test:watch']
@@ -64,6 +66,10 @@ module.exports = function (grunt) {
                     '<%= yeoman.test %>/spec/**/*.js',
                     '<%= yeoman.test %>/index.html'
                 ]
+            },
+            yuidoc: {
+                files: ['<%= yeoman.app %>/scripts/**/*.js'],
+                tasks: ['yuidoc']
             }
         },
 
@@ -352,6 +358,18 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
+        },
+        yuidoc: {
+            compile: {
+                name: '<%= pkg.name %>',
+                description: '<%= pkg.description %>',
+                version: '<%= pkg.version %>',
+                url: '<%= pkg.homepage %>',
+                options: {
+                    paths: 'app/scripts/',
+                    outdir: 'docs/'
+                }
+            }
         }
     });
 
@@ -403,7 +421,8 @@ module.exports = function (grunt) {
         'modernizr',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'yuidoc'
     ]);
 
     grunt.registerTask('default', [

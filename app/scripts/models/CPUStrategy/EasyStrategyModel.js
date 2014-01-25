@@ -4,8 +4,9 @@
     'use strict';
 
     /**
-     * @class App.CPUStrategy.StrategyModel
-     * @extends Backbone.Model
+     * @namespace App.CPUStrategy
+     * @class EasyStrategyModel
+     * @extends App.CPUStrategy.StrategyModel
      */
     App.CPUStrategy.EasyStrategyModel = App.CPUStrategy.StrategyModel.extend({
 

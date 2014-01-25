@@ -17,7 +17,8 @@
     };
 
     /**
-     * @class App.CPUModel
+     * @namespace App
+     * @class CPUModel
      * @extends Backbone.Model
      */
     App.CPUModel = Backbone.Model.extend({
@@ -47,7 +48,7 @@
             };
         },
 
-        validate: function(attrs, options) {
+        validate: function(attrs) {
             if (_.indexOf(levels, attrs.level)) {
                 return 'Invalid level: ' + attrs.level;
             }
@@ -59,8 +60,7 @@
          *   @param {App.Collection.CellCollection} collection
          */
         initialize: function(options) {
-            var s = {},
-                c = options.collection,
+            var c = options.collection,
                 l = levels;
 
             this.strategies = [];

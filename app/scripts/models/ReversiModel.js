@@ -8,7 +8,8 @@
         none  = 'none';
 
     /**
-     * @class App.ReversiModel
+     * @namespace App
+     * @class ReversiModel
      * @extends Backbone.Model
      */
     App.ReversiModel = Backbone.Model.extend({
@@ -110,38 +111,6 @@
     }, {
 
         /**
-         * Color codes
-         * 
-         * @module ReversiModel.colorCode
-         */
-        colorCode: {
-
-            /**
-             * Black color code.
-             * 
-             * @property blacak
-             * @type {String}
-             */
-            black: black,
-
-            /**
-             * White color code.
-             * 
-             * @property white
-             * @type {String}
-             */
-            white: white,
-
-            /**
-             * None color code.
-             * 
-             * @property none
-             * @type {String}
-             */
-            none:  none
-        },
-
-        /**
          * Return true if this color is valid.
          * 
          * @static
@@ -151,6 +120,39 @@
          */
         validColor: function(color) {
             return _.indexOf(_.values(this.colorCode), color) > -1;
+        },
+
+        /**
+         * Color codes
+         */
+        colorCode: {
+
+            /**
+             * Black color code.
+             * 
+             * @static
+             * @property black
+             * @type String
+             */
+            black: black,
+
+            /**
+             * White color code.
+             * 
+             * @static
+             * @property white
+             * @type String
+             */
+            white: white,
+
+            /**
+             * None color code.
+             * 
+             * @static
+             * @property none
+             * @type String
+             */
+            none:  none
         }
     });
 })();
