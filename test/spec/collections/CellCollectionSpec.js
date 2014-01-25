@@ -31,7 +31,7 @@
             });
 
             it('should put 4 reversi', function () {
-                expect(collection.getCellsWithReversi().length).to.equals(4);
+                expect(collection.getCellsPuttingReversi().length).to.equals(4);
             });
 
             it('should put at center on the board', function () {
@@ -52,13 +52,13 @@
             });
         });
 
-        describe('#getPutableReversiCells', function () {
+        describe('#getCandidates', function () {
             describe('when first placement of reversi,', function () {
                 before(function() {
                     collection.setInitialReversi();
                 });
                 it('return 4 cells if you try to put black reversi', function () {
-                    var cells = collection.getPutableReversiCells(colorCode.black);
+                    var cells = collection.getCandidates(colorCode.black);
                     expect(cells).to.have.length(4);
                     _.each(cells, function(c) {
                         switch (c.row) {
@@ -81,7 +81,7 @@
                     });
                 });
                 it('return 4 cells if you try to put white reversi', function () {
-                    var cells = collection.getPutableReversiCells(colorCode.white);
+                    var cells = collection.getCandidates(colorCode.white);
                     expect(cells).to.have.length(4);
                     _.each(cells, function(c) {
                         switch (c.row) {

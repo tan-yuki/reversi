@@ -121,9 +121,10 @@
         /**
          * Get cells which has reversi
          *
+         * @method getCellsReversi
          * @return {Array} The list of App.CellModel
          */
-        getCellsWithReversi: function() {
+        getCellsPuttingReversi: function() {
             return this.filter(function(model) {
                 return model.hasReversi();
             });
@@ -132,11 +133,12 @@
         /**
          * Get reversies which is put on the board
          * 
+         * @method getReversies
          * @param {String} [color]
          * @return {Array} The list of App.ReversiModel
          */
         getReversies: function(color) {
-            var cells = this.getCellsWithReversi();
+            var cells = this.getCellsPuttingReversi();
             var reversies = _.map(cells, function(c) {
                 return c.reversi;
             });
@@ -153,6 +155,7 @@
         /**
          * Count reversies
          * 
+         * @method countReversies
          * @param {String} [color]
          * @return {Integer} The count of reversies
          */
@@ -163,17 +166,25 @@
         /**
          * Return cells on which we can put reversi.
          * 
+         * @method getCandidates
          * @param {String} color
          * @return {Array} List of App.CellModel
          */
-        getPutableReversiCells: function(color) {
+        getCandidates: function(color) {
             return this.filter(function(cell) {
                 return cell.canPutReversi(color);
             });
         },
 
-        countPutableCells: function(color) {
-            return this.getPutableReversiCells(color).length;
+        /**
+         * Return the count of cells on which we can put reversi.
+         * 
+         * @method countCandidates
+         * @param {String} color
+         * @return {Array} List of App.CellModel
+         */
+        countCandidates: function(color) {
+            return this.getCandidates(color).length;
         }
 
     });

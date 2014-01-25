@@ -20,6 +20,8 @@
 
         cpu: null,
 
+        reversiView: null,
+
         events: {
             'click': 'onClick'
         },
@@ -29,7 +31,12 @@
                 cpu: null
             }, options);
 
+            this.reversiView = new App.ReversiView({
+                model: this.model.reversi
+            });
+
             this.cpu = options.cpu;
+            this.listenTo(App.mediator, 'cell:render', this.render);
         },
 
         onClick: function(e) {
@@ -39,6 +46,7 @@
             }
 
             this.putReversi();
+            App.mediator.trigger('cell:render');
         },
 
         putReversi: function() {
@@ -70,7 +78,7 @@
             // Check player reversi.
             // If there is no reversi which opponent can put,
             // CPU put reversi again.
-            if (this.model.collection.countPutableCells(playerColor) === 0) {
+            if (this.model.collection.countCandidates(playerColor) === 0) {
                 this.cannotPutPlayerReversi();
                 this.putReversiByCPU();
             }
@@ -141,12 +149,13 @@
         },
 
         render: function() {
-            var view = new App.ReversiView({
-                model: this.model.reversi
-            });
-            this.$el.html(view.render().el);
-            this.$el.data('row', this.model.row);
-            this.$el.data('col', this.model.col);
+            this.$el.empty();
+            this.$el.append(this.reversiView.render().el);
+
+            if (this.model.isCandidate(playerColor)) {
+                this.$el.append('<div class="candidate"></div>');
+            }
+
             return this;
         }
     });

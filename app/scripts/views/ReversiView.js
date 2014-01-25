@@ -10,10 +10,6 @@
 
         model: null,
 
-        initialize: function() {
-            this.listenTo(this.model, 'change', this.render);
-        },
-
         render: function() {
             this.$el.removeClass();
             if (this.model.hasColor()) {
@@ -22,6 +18,12 @@
             }
             this.$el.addClass(this.className);
             return this;
+        },
+
+        renderCandidate: function() {
+            if (this.model.cell.isCandidate(playerColor)) {
+                this.$el.append('<div class="candidate"></div>');
+            }
         }
     });
 })();

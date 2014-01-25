@@ -22,9 +22,18 @@
             this.cpu = new App.CPUModel({
                 collection: this.collection
             });
+            this.listenTo(App.mediator, 'board:render', this.renderBoard);
         },
 
         render: function() {
+            App.mediator.trigger('board:render');
+            App.mediator.trigger('cell:render');
+            return this;
+        },
+
+        renderBoard: function() {
+            this.$el.empty();
+
             var edge = this.edge;
             var rows = [];
             for (var i = 0; i < edge; i++) {
@@ -40,7 +49,6 @@
                 rows.push($tr.append(cells));
             }
             this.$el.append(rows);
-            return this;
         }
     });
 })();

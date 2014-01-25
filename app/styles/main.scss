@@ -99,6 +99,7 @@ body {
   height: 40px;
   border: 1px solid black;
   background-color: green;
+  position: relative;
 }
 
 .cell .reversi {
@@ -116,4 +117,19 @@ body {
 
 .cell .reversi.white {
   background-color: white;
+}
+
+.cell .candidate {
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ccc;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+  opacity: 0.6;
 }

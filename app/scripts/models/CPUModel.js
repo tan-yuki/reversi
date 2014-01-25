@@ -5,21 +5,41 @@
 
     var CPUStrategy = App.CPUStrategy;
 
-    // levels
+    /**
+     * Levels for this CPU
+     * 
+     * @type Array
+     */
     var levels = {
-        easy  : 1,
-        normal: 2,
-        hard  : 3
+        easy  : 'easy',
+        normal: 'normal',
+        hard  : 'hard'
     };
 
     /**
-     * Flag whether CPU is taking action now.
-     * @private
-     * @type {Boolean}
+     * @class App.CPUModel
+     * @extends Backbone.Model
      */
-    var isAction = false;
-
     App.CPUModel = Backbone.Model.extend({
+
+        /**
+         * List of App.CPUStrategy.Strategy
+         * 
+         * @private
+         * @type {Array}
+         * @property strategies
+         */
+        strategies: null,
+
+        /**
+         * Current selected strategy.
+         * 
+         * @private
+         * @type {App.CPUStrategy.Strategy}
+         * @property strategy
+         */
+        strategy: null,
+
 
         defaults: function() {
             return {
@@ -34,39 +54,53 @@
         },
 
         /**
-         * List of App.CPUStrategy.Strategy
-         * @var {Array}
+         * @constructor
+         * @param {Object} options
+         *   @param {App.Collection.CellCollection} collection
          */
-        strategies: [],
-
-        /**
-         * @var {App.CPUStrategy.Strategy}
-         */
-        strategy: null,
-
         initialize: function(options) {
             var s = {},
                 c = options.collection,
                 l = levels;
 
+            this.strategies = [];
+
             // set strategies
-            s[l.easy]   = new CPUStrategy.EasyStrategyModel({collection: c});
-            s[l.normal] = new CPUStrategy.NormalStrategyModel({collection: c});
-            s[l.hard]   = new CPUStrategy.HardStrategyModel({collection: c});
-            this.strategies = s;
+            this.strategies[l.easy]   = new CPUStrategy.EasyStrategyModel({collection: c});
+            this.strategies[l.normal] = new CPUStrategy.NormalStrategyModel({collection: c});
+            this.strategies[l.hard]   = new CPUStrategy.HardStrategyModel({collection: c});
 
             this.setLevel(options.level);
         },
 
+        /**
+         * Put CPU reversi
+         * 
+         * @method putReversi
+         * @param {String} color
+         */
         putReversi: function(color) {
             return this.getStrategy().putReversi(color);
         },
 
+        /**
+         * Set CPU level
+         * 
+         * @method setLevel
+         * @param {String} level
+         */
         setLevel: function(level) {
             this.set('level', level, {validate: true});
             this.strategy = this.strategies[level];
         },
 
+        /**
+         * Return CPU strategy
+         * 
+         * @private
+         * @method getStrategy
+         * @return {App.CPUStrategy.StrategyModel}
+         */
         getStrategy: function() {
             if (!this.strategy) {
                 this.setLevel(this.get('level'));

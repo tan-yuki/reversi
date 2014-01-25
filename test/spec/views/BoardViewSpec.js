@@ -3,27 +3,28 @@
 (function () {
     'use strict';
 
+    var boardView;
+    var colorCode = App.ReversiModel.colorCode;
+    var black = colorCode.black;
+
     describe('BoardView', function () {
         before(function() {
-            $('body').append('<div id="workspace"></div>');
+            boardView = new App.BoardView({
+                edge: 8
+            });
+            $('#workspace').append(boardView.render().$el);
         });
         after(function() {
-            $('#workspace').remove();
+            $('#workspace').empty();
         });
-        describe('#render', function () {
-            before(function() {
-            });
-            it('should put model (row,col) = (2,5) to ' +
-                '2 left, 5 bottom position from left-top corner', function() {
+        describe('#onClick', function () {
+            it('should add black reversi at (row,col) = (2,4) when player click the cell (2,4)', function() {
 
-                var view = new App.BoardView({
-                    edge: 8
-                });
-                view.render();
+                $('#workspace').find('tr').eq(4).find('td').eq(2).click();
 
-                var $cell = view.$('tr').eq(5).find('td').eq(2).data('row');
-                expect($cell.data('row')).to.equals(2);
-                expect($cell.data('col')).to.equals(5);
+                var cell = boardView.collection.search(2, 4);
+                expect(cell.hasReversi()).to.be.true;
+                expect(cell.getColor()).to.equals(black);
             });
         });
     });

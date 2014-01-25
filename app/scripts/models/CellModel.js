@@ -3,13 +3,42 @@
 (function() {
     'use strict';
 
+    /**
+     * @class App.CellModel
+     * @extends Backbone.Model
+     */
     App.CellModel = Backbone.Model.extend({
+
+        /**
+         * Row index
+         * 
+         * @type {Integer}
+         * @property row
+         */
         row: 0,
 
+        /**
+         * Column index
+         * 
+         * @type {Integer}
+         * @property col
+         */
         col: 0,
 
+        /**
+         * Reversi model
+         * 
+         * @type {App.RevesiModel}
+         * @property reversi
+         */
         reversi: null,
 
+        /**
+         * @constructor
+         * @param {Object} options
+         *   @param {Integer} row Row index
+         *   @param {Integer} col Column index
+         */
         initialize: function(options) {
             options = _.extend({
                 row: 0,
@@ -19,7 +48,9 @@
             this.row = options.row;
             this.col = options.col;
 
-            this.reversi = new App.ReversiModel(this);
+            this.reversi = new App.ReversiModel({
+                cell: this
+            });
         },
 
         /**
@@ -250,6 +281,92 @@
             return _toggleRecursively(this, vector, color);
         },
 
+        /**
+         * Return true if this cell can put this color reversi.
+         * 
+         * @method isCandidate
+         * @param {String} color
+         * @return {Boolean}
+         */
+        isCandidate: function(color) {
+            var cells = this.collection.getCandidates(color);
+            return _.indexOf(cells, this) > -1;
+        },
+
+        /**
+         * Return true if this cell is placed at edge.
+         * 
+         * @method isEdge
+         * @return {Boolean}
+         */
+        isEdge: function() {
+            var edge = this.collection.edge - 1;
+            return this.row === 0    ||
+                   this.row === edge ||
+                   this.col === 0    ||
+                   this.col === edge ;
+        },
+
+        /**
+         * Return true if this cell is placed at corner.
+         * 
+         * @method isCorner
+         * @return {Boolean}
+         */
+        isCorner: function() {
+            var edge = this.collection.edge - 1;
+            return this.row === 0    && this.col === 0    ||
+                   this.row === 0    && this.col === edge ||
+                   this.row === edge && this.col === 0    ||
+                   this.row === edge && this.col === edge;
+        },
+
+        /**
+         * Return true if this cell is placesd at around corner.
+         * 
+         * @method isAroundCorner
+         * @return {Boolean}
+         */
+        isAroundCorner: function() {
+            var edge = this.collection.edge - 1;
+            return this.isStarPosition() ||
+                   // top left corner
+                   this.row === 0 && this.col === 1 ||
+                   this.row === 1 && this.col === 0 ||
+
+                   // top right corner
+                   this.row === edge -1 && this.col === 0 ||
+                   this.row === edge    && this.col === 1 ||
+
+                   // bottom left corner
+                   this.row === 0 && this.col === edge - 1 ||
+                   this.row === 1 && this.col === edge     ||
+
+                   // bottom right corner
+                   this.row === edge -1 && this.col === edge ||
+                   this.row === edge    && this.col === edge - 1;
+        },
+
+        /**
+         * Return true if this cell is placesd at diagonal corner.
+         * 
+         * @method isStarPosition
+         * @return {Boolean}
+         */
+        isStarPosition: function() {
+            var edge = this.collection.edge - 1;
+            return this.row === 1        && this.col === 1        ||
+                   this.row === 1        && this.col === edge - 1 ||
+                   this.row === edge - 1 && this.col === 1        ||
+                   this.row === edge - 1 && this.col === edge - 1;
+        },
+
+        /**
+         * Return this cell's (row, col)
+         * 
+         * @method {toString}
+         * @return {String}
+         */
         toString: function() {
             return '(row, col) = (' + this.row + ',' + this.col + ')';
         }
