@@ -175,7 +175,7 @@
             "module": "App",
             "namespace": "App.CPUStrategy",
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 228,
+            "line": 253,
             "extends": "Backbone.Model"
         },
         "App.CPUModel": {
@@ -567,16 +567,41 @@
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
             "line": 105,
-            "description": "Choose cells which is not placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
+            "description": "Execute opposite strategy.\n    \n    var stragegy = new Strategy({\n        cells: cells,\n        color: color\n    });\n    // This cells don't contain edge cell.\n    var cells = strategy.not(strategy.edge)().cells;\n    var cells = strategy.not('edge')().cells;",
             "itemtype": "method",
-            "name": "notEdge",
+            "name": "not",
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
+        },
+        {
+            "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
+            "line": 133,
+            "description": "Filter cells.",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "func",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "App.CellModel"
+                }
+            ],
             "chainable": 1,
             "class": "App.CPUStrategy.Strategy",
             "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 119,
+            "line": 146,
             "description": "Choose cells which is placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
             "itemtype": "method",
             "name": "edge",
@@ -586,7 +611,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 133,
+            "line": 159,
             "description": "Choose cells which is placed at corner.\nSee {{#crossLink \"App.CellModel/isCorner:method\"}}",
             "itemtype": "method",
             "name": "corner",
@@ -596,7 +621,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 147,
+            "line": 172,
             "description": "Choose cells which is placed around corner.\nSee {{#crossLink \"App.CellModel/isAroundCorner:method\"}}",
             "itemtype": "method",
             "name": "aroundCorner",
@@ -606,12 +631,12 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 161,
+            "line": 185,
             "description": "Create reversi map.\n\n以下の様なObjectを返す。\n- key: オセロを裏返す数\n- value: CellModelの配列",
             "access": "private",
             "tagname": "",
             "itemtype": "method",
-            "name": "aroundCorner",
+            "name": "createReversiMap",
             "return": {
                 "description": "",
                 "type": "Object"
@@ -621,7 +646,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 185,
+            "line": 209,
             "description": "Choose most reversiable cells",
             "itemtype": "method",
             "name": "mostReversable",
@@ -631,7 +656,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 199,
+            "line": 224,
             "description": "Choose most reversiable cells",
             "itemtype": "method",
             "name": "leastReversable",
@@ -641,7 +666,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 213,
+            "line": 239,
             "description": "Choose start position cell.\nSee {{#crossLink \"App.CellModel/isStarPosition:method\"}}",
             "itemtype": "method",
             "name": "starPosition",
@@ -651,7 +676,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 235,
+            "line": 260,
             "is_constructor": 1,
             "params": [
                 {
@@ -670,7 +695,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 244,
+            "line": 269,
             "description": "Select cell which CPU put reversi\n\n__caution__: This method should be implemented in the child class.",
             "itemtype": "method",
             "name": "selectCell",
@@ -695,7 +720,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 263,
+            "line": 288,
             "description": "Put reversi",
             "itemtype": "method",
             "name": "putReversi",
@@ -715,7 +740,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 284,
+            "line": 309,
             "description": "Create new stragety.\n    \n    var strategy = this.strategy;\n    var cell = strategy.select([\n        strategy.mostReversable,\n        strategy.edge\n    ]);\n    \nSee {{#crossLink \"Strategy\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "stragegy",
@@ -1407,6 +1432,10 @@
     ],
     "warnings": [
         {
+            "message": "param name missing: {App.CellModel}",
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:133"
+        },
+        {
             "message": "unknown tag: reutrn",
             "line": " app/scripts/models/CellModel.js:266"
         },
@@ -1419,8 +1448,12 @@
             "line": " app/scripts/models/CPUStrategy/StrategyModel.js:42"
         },
         {
+            "message": "Missing item type\nFilter cells.",
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:133"
+        },
+        {
             "message": "Missing item type",
-            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:235"
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:260"
         },
         {
             "message": "Missing item type\nLevels for this CPU",

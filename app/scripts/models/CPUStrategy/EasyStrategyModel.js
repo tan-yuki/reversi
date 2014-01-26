@@ -26,7 +26,7 @@
             return strategy.select([
                 strategy.starPosition,
                 strategy.aroundCorner,
-                strategy.notEdge
+                strategy.not(strategy.edge)
             ]);
         }
     });

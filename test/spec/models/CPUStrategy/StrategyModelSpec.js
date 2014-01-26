@@ -87,11 +87,11 @@
                 });
             });
 
-            describe('#notEdge', function() {
+            describe('#not', function() {
                 var execNotEdgeStrategy = function(cells) {
                     return fakeStrategy
                         .strategy(cells, black)
-                        .notEdge()
+                        .not('edge')()
                         .cells;
                 };
                 it('should return only center cells', function() {
@@ -332,11 +332,24 @@
                     var strategy = fakeStrategy.strategy(cells, black);
                     var cell = strategy.select([
                         strategy.leastReversable,
-                        strategy.notEdge
+                        strategy.not(strategy.edge)
                     ]);
 
                     expect(cell.row).to.equal(2);
                     expect(cell.col).to.equal(5);
+                });
+                it('should set several strategies', function() {
+                    var cells = collection.getCandidates(black);
+                    var strategy = fakeStrategy.strategy(cells, black);
+                    var cell = strategy.select([
+                        strategy.not(strategy.corner),
+                        strategy.not(strategy.aroundCorner),
+                        strategy.edge,
+                        strategy.mostReversable
+                    ]);
+
+                    expect(cell.row).to.equal(0);
+                    expect(cell.col).to.equal(3);
                 });
             });
         });

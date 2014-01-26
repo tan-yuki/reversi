@@ -86,14 +86,14 @@
 
                     // Execute strategy
                     var s = strategies[i];
-                    s = _.bind(s, _.extend(this, {
+                    s = _.bind(s, _.extend({}, this, {
                         cells: cells,
                     }))();
 
                     // Get result
                     var newCells = s.cells;
                     if (!newCells.length) {
-                        break;
+                        continue;
                     }
                     cells = newCells;
                 }
@@ -103,16 +103,43 @@
         },
 
         /**
-         * Choose cells which is not placed at edge.
-         * See {{#crossLink "App.CellModel/isEdge:method"}}
+         * Execute opposite strategy.
+         *     
+         *     var stragegy = new Strategy({
+         *         cells: cells,
+         *         color: color
+         *     });
+         *     // This cells don't contain edge cell.
+         *     var cells = strategy.not(strategy.edge)().cells;
+         *     var cells = strategy.not('edge')().cells;
+         *     
+         * @method not
+         * @return {Function}
+         */
+        not: function(func) {
+            if (_.isFunction(func)) {
+            } else if (_.isString(func)) {
+                func = this[func];
+            }
+            var self = _.extend({}, this, {
+                filter: function(f) {
+                    this.cells = _.reject(this.cells, f);
+                    return this;
+                }
+            });
+            return _.bind(func, self);
+        },
+
+        /**
+         * Filter cells.
          * 
-         * @method notEdge
+         * @private
+         * @param {Function} func
+         *   @param {App.CellModel}
          * @chainable
          */
-        notEdge: function() {
-            this.cells = _.filter(this.cells, function(c) {
-                return ! c.isEdge();
-            });
+        filter: function(func) {
+            this.cells = _.filter(this.cells, func);
             return this;
         },
 
@@ -124,10 +151,9 @@
          * @chainable
          */
         edge: function() {
-            this.cells = _.filter(this.cells, function(c) {
+            return this.filter(function(c) {
                 return c.isEdge();
             });
-            return this;
         },
 
         /**
@@ -138,10 +164,9 @@
          * @chainable
          */
         corner: function() {
-            this.cells = _.filter(this.cells, function(c) {
+            return this.filter(function(c) {
                 return c.isCorner();
             });
-            return this;
         },
 
         /**
@@ -152,10 +177,9 @@
          * @chainable
          */
         aroundCorner: function() {
-            this.cells = _.filter(this.cells, function(c) {
+            return this.filter(function(c) {
                 return c.isAroundCorner();
             });
-            return this;
         },
 
         /**
@@ -166,10 +190,10 @@
          * - value: CellModelの配列
          * 
          * @private
-         * @method aroundCorner
+         * @method createReversiMap
          * @return {Object}
          */
-        _createReversiMap: function() {
+        createReversiMap: function() {
             var color = this.color;
             var map = {};
             _.each(this.cells, function(c) {
@@ -189,11 +213,12 @@
          * @chainable
          */
         mostReversable: function() {
-            var map = this._createReversiMap();
-            var index = _.max(_.keys(map));
-
-            this.cells = map[index];
-            return this;
+            var map = this.createReversiMap();
+            var maxCount = parseInt(_.max(_.keys(map)));
+            var color = this.color;
+            return this.filter(function(c) {
+                return c.countReverse(color) === maxCount;
+            });
         },
 
         /**
@@ -203,11 +228,12 @@
          * @chainable
          */
         leastReversable: function() {
-            var map = this._createReversiMap();
-            var index = _.min(_.keys(map));
-
-            this.cells = map[index];
-            return this;
+            var map = this.createReversiMap();
+            var minCount = parseInt(_.min(_.keys(map)));
+            var color = this.color;
+            return this.filter(function(c) {
+                return c.countReverse(color) === minCount;
+            });
         },
 
         /**
@@ -218,10 +244,9 @@
          * @chainable
          */
         starPosition: function() {
-            this.cells =_.filter(this.cells, function(c) {
+            return this.filter(function(c) {
                 return c.isStarPosition();
             });
-            return this;
         }
     });
 

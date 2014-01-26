@@ -10,21 +10,13 @@
 
         collection: null,
 
-        edge: 0,
-
         cpu: null,
 
         cellViews: null,
 
         initialize: function(options) {
-            var edge = this.edge = options.edge;
-            this.collection = new App.CellCollection(false, {
-                edge: edge
-            });
-            this.collection.setInitialReversi();
-            this.cpu = new App.CPUModel({
-                collection: this.collection
-            });
+            this.cpu = options.cpu;
+            this.collection = options.collection;
             this.listenTo(App.mediator, 'board:render', this.renderBoard);
         },
 
@@ -37,7 +29,7 @@
         renderBoard: function() {
             this.$el.empty();
 
-            var edge = this.edge;
+            var edge = this.collection.edge;
             var rows = [];
 
             for (var i = 0; i < edge; i++) {
@@ -63,7 +55,7 @@
                 return this.cellViews;
             }
             var cellViews = [];
-            var edge = this.edge;
+            var edge = this.collection.edge;
 
             for (var i = 0; i < edge; i++) {
                 cellViews[i] = [];

@@ -9,15 +9,12 @@
         cpu: null,
 
         initialize: function(options) {
-            this.cpu = new App.CPUModel({
-                collection: options.collection
-            });
-
+            this.cpu = options.cpu;
             _.bindAll(this, 'changeLevel');
         },
 
         events: {
-            'click #setting input[name=level]': 'changeLevel'
+            'click input[name=level]': 'changeLevel'
         },
 
         changeLevel: function(e) {

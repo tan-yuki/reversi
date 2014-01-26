@@ -4,6 +4,8 @@
     'use strict';
 
     var boardView;
+    var collection;
+    var cpu;
     var colorCode = App.ReversiModel.colorCode;
     var black = colorCode.black;
 
@@ -12,9 +14,17 @@
     describe('BoardView', function () {
         before(function() {
             App.alert = function() {};
+            cpu = new App.CPUModel({
+                collection: this.collection
+            });
+            collection = new App.CellCollection(false, {
+                edge: 8
+            });
+            collection.setInitialReversi();
 
             boardView = new App.BoardView({
-                edge: 8
+                collection: collection,
+                cpu: cpu
             });
             $('#workspace').append(boardView.render().$el);
         });

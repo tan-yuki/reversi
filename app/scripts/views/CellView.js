@@ -54,8 +54,10 @@
                 isAction = false;
                 return;
             }
-            this.putReversiByCPU();
-            isAction = false;
+            setTimeout(_.bind(function() {
+                this.putReversiByCPU();
+                isAction = false;
+            }, this), 1500);
         },
 
         putReversiByPlayer: function() {
