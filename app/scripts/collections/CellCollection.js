@@ -42,7 +42,6 @@
                 }
             }
             this.reset(models, _.extend({silent: true}, options));
-            this.setInitialReversi();
         },
 
         /**
@@ -153,12 +152,13 @@
          * Get cells which has reversi
          *
          * @method getCellsPuttingReversi
+         * @param {String} [color] Color code
          * @return {Array}
          *   The list of {{#crossLink "App.CellModel"}}{{/crossLink}}
          */
-        getCellsPuttingReversi: function() {
+        getCellsPuttingReversi: function(color) {
             return this.filter(function(model) {
-                return model.hasReversi();
+                return model.hasReversi(color);
             });
         },
 

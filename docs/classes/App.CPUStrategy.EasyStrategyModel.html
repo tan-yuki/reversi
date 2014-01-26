@@ -49,11 +49,11 @@
             
                 <li><a href="../classes/App.CPUStrategy.EasyStrategyModel.html">App.CPUStrategy.EasyStrategyModel</a></li>
             
+                <li><a href="../classes/App.CPUStrategy.Strategy.html">App.CPUStrategy.Strategy</a></li>
+            
                 <li><a href="../classes/App.CPUStrategy.StrategyModel.html">App.CPUStrategy.StrategyModel</a></li>
             
                 <li><a href="../classes/App.ReversiModel.html">App.ReversiModel</a></li>
-            
-                <li><a href="../classes/App.Strategy.html">App.Strategy</a></li>
             
             </ul>
 
@@ -233,7 +233,7 @@
             
         
         
-        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l264"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:264</code></a>
+        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l263"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:263</code></a>
         
         </p>
 
@@ -302,13 +302,13 @@
             
                 <li class="arg">
                     
-                        <code>color!~YUIDOC_LINE~!</code>
+                        <code>cells!~YUIDOC_LINE~!</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>cells!~YUIDOC_LINE~!</code>
+                        <code>color!~YUIDOC_LINE~!</code>
                     
                 </li>
             
@@ -342,7 +342,7 @@
             
         
         
-        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l245"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:245</code></a>
+        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l244"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:244</code></a>
         
         </p>
 
@@ -366,22 +366,6 @@
             
                 <li class="param">
                     
-                        <code class="param-name">color!~YUIDOC_LINE~!</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The color code of CPU&#39;s reversi.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
                         <code class="param-name">cells!~YUIDOC_LINE~!</code>
                         <span class="type">Array</span>
                     
@@ -391,6 +375,22 @@
                     <div class="param-description">
                         <p>The list of App.CellModel
   which CPU can put reversi.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">color!~YUIDOC_LINE~!</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The color code of CPU&#39;s reversi.</p>
 
                     </div>
 
@@ -430,13 +430,13 @@
             
                 <li class="arg">
                     
-                        <code>color!~YUIDOC_LINE~!</code>
+                        <code>cells!~YUIDOC_LINE~!</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>cells!~YUIDOC_LINE~!</code>
+                        <code>color!~YUIDOC_LINE~!</code>
                     
                 </li>
             
@@ -470,7 +470,7 @@
             
         
         
-        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l285"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:285</code></a>
+        <a href="../files/app_scripts_models_CPUStrategy_StrategyModel.js.html#l284"><code>app&#x2F;scripts&#x2F;models&#x2F;CPUStrategy&#x2F;StrategyModel.js:284</code></a>
         
         </p>
 
@@ -484,9 +484,10 @@
         <p>Create new stragety.</p>
 <pre class="code prettyprint"><code>var strategy = this.strategy;
 var cell = strategy.select([
-    strategy.edge,
-    strategy.mostReversable
+    strategy.mostReversable,
+    strategy.edge
 ]);</code></pre>
+<p>See Strategy</p>
 
     </div>
 
@@ -495,22 +496,6 @@ var cell = strategy.select([
             <h4>Parameters:</h4>
 
             <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">color!~YUIDOC_LINE~!</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The color code of CPU&#39;s reversi.</p>
-
-                    </div>
-
-                    
-                </li>
             
                 <li class="param">
                     
@@ -523,6 +508,22 @@ var cell = strategy.select([
                     <div class="param-description">
                         <p>The list of App.CellModel
   which CPU can put reversi.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">color!~YUIDOC_LINE~!</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The color code of CPU&#39;s reversi.</p>
 
                     </div>
 

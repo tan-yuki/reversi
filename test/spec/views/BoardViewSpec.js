@@ -7,8 +7,12 @@
     var colorCode = App.ReversiModel.colorCode;
     var black = colorCode.black;
 
+    var oldAlert = App.alert;
+
     describe('BoardView', function () {
         before(function() {
+            App.alert = function() {};
+
             boardView = new App.BoardView({
                 edge: 8
             });
@@ -16,6 +20,8 @@
         });
         after(function() {
             $('#workspace').empty();
+
+            App.alert = oldAlert;
         });
         describe('#onClick', function () {
             it('should add black reversi at (row,col) = (2,4) when player click the cell (2,4)', function() {

@@ -19,6 +19,7 @@
             this.collection = new App.CellCollection(false, {
                 edge: edge
             });
+            this.collection.setInitialReversi();
             this.cpu = new App.CPUModel({
                 collection: this.collection
             });

@@ -1,4 +1,4 @@
-/* global App,alert */
+/* global App */
 
 (function() {
     'use strict';
@@ -113,7 +113,7 @@
                 'あなた: ' + playerCount + '\n' +
                 'CPU:    ' + cpuCount + '\n' +
                 result;
-            alert(msg);
+            App.alert(msg);
         },
 
         cannotContinueGame: function() {
@@ -122,7 +122,7 @@
                 var msg =
                     'オセロが一色のみになったのでゲームを終了します。\n' +
                     result;
-                alert(msg);
+                App.alert(msg);
                 return true;
             };
 
@@ -139,13 +139,13 @@
 
         cannotPutPlayerReversi: function() {
             if (!this.isGameEnd) {
-                alert('あなたの番ですがオセロが置けません。CPUの番です。');
+                App.alert('あなたの番ですがオセロが置けません。CPUの番です。');
             }
         },
 
         cannotPutCPUReversi: function() {
             if (!this.isGameEnd) {
-                alert('CPUのオセロが置けません。あなたの番です。');
+                All.alert('CPUのオセロが置けません。あなたの番です。');
             }
         },
 

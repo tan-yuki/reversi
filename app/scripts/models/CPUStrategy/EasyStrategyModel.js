@@ -10,12 +10,12 @@
      */
     App.CPUStrategy.EasyStrategyModel = App.CPUStrategy.StrategyModel.extend({
 
-        selectCell: function(color, cells) {
+        selectCell: function(cells, color) {
             var collection = this.collection,
                 edge = collection.edge;
 
 
-            var strategy = this.strategy(color, cells);
+            var strategy = this.strategy(cells, color);
 
             if (collection.countReversies() < (edge * edge / 4)) {
                 strategy.mostReversable();

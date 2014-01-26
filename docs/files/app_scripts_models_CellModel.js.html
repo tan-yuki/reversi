@@ -49,11 +49,11 @@
             
                 <li><a href="../classes/App.CPUStrategy.EasyStrategyModel.html">App.CPUStrategy.EasyStrategyModel</a></li>
             
+                <li><a href="../classes/App.CPUStrategy.Strategy.html">App.CPUStrategy.Strategy</a></li>
+            
                 <li><a href="../classes/App.CPUStrategy.StrategyModel.html">App.CPUStrategy.StrategyModel</a></li>
             
                 <li><a href="../classes/App.ReversiModel.html">App.ReversiModel</a></li>
-            
-                <li><a href="../classes/App.Strategy.html">App.Strategy</a></li>
             
             </ul>
 
@@ -217,10 +217,11 @@
          * Return true if this cell has reversi.
          * 
          * @method hasReversi
+         * @param {String} [color] Color code
          * @return {Boolean}
          */
-        hasReversi: function() {
-            return this.reversi.hasColor();
+        hasReversi: function(color) {
+            return this.reversi.hasColor(color);
         },
 
         /**

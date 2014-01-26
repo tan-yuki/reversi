@@ -32,12 +32,11 @@
             "name": "app/scripts/models/CPUStrategy/StrategyModel.js",
             "modules": {},
             "classes": {
-                "App.Strategy": 1,
+                "App.CPUStrategy.Strategy": 1,
                 "App.CPUStrategy.StrategyModel": 1
             },
             "fors": {},
             "namespaces": {
-                "App": 1,
                 "App.CPUStrategy": 1
             }
         },
@@ -98,7 +97,7 @@
             "classes": {
                 "App.CellCollection": 1,
                 "App.CPUStrategy.EasyStrategyModel": 1,
-                "App.Strategy": 1,
+                "App.CPUStrategy.Strategy": 1,
                 "App.CPUStrategy.StrategyModel": 1,
                 "App.CPUModel": 1,
                 "App.CellModel": 1,
@@ -150,20 +149,19 @@
             "line": 6,
             "extends": "App.CPUStrategy.StrategyModel"
         },
-        "App.Strategy": {
-            "name": "App.Strategy",
-            "shortname": "App.Strategy",
+        "App.CPUStrategy.Strategy": {
+            "name": "App.CPUStrategy.Strategy",
+            "shortname": "Strategy",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "module": "App",
-            "namespace": "App",
+            "namespace": "App.CPUStrategy",
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
             "line": 8,
-            "access": "private",
-            "tagname": "",
+            "description": "This class can only create instance in\n{{#crossLink \"App.CPUStrategy.StrategyModel/strategy:method\"}}{{/crossLink}}",
             "extends": "Backbone.Model"
         },
         "App.CPUStrategy.StrategyModel": {
@@ -177,7 +175,7 @@
             "module": "App",
             "namespace": "App.CPUStrategy",
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 229,
+            "line": 228,
             "extends": "Backbone.Model"
         },
         "App.CPUModel": {
@@ -253,7 +251,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 48,
+            "line": 47,
             "description": "Set initialize revesies.",
             "itemtype": "method",
             "name": "setInitializeReversi",
@@ -262,7 +260,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 61,
+            "line": 60,
             "description": "Add reversi.\nオセロを置くときのvalidation、\nオセロの裏返しは行わない.",
             "itemtype": "method",
             "name": "addReversi",
@@ -288,7 +286,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 83,
+            "line": 82,
             "description": "Put reversi.",
             "itemtype": "method",
             "name": "putReversi",
@@ -314,7 +312,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 100,
+            "line": 99,
             "description": "Return true if there is no cell to put reversi.",
             "itemtype": "method",
             "name": "isFullReversi",
@@ -327,7 +325,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 110,
+            "line": 109,
             "description": "Return true if there is only one color.",
             "itemtype": "method",
             "name": "isOnlyColor",
@@ -340,7 +338,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 120,
+            "line": 119,
             "description": "Return true if there is only one color.",
             "itemtype": "method",
             "name": "isOnly",
@@ -360,7 +358,7 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 131,
+            "line": 130,
             "description": "Search cell",
             "itemtype": "method",
             "name": "search",
@@ -385,10 +383,18 @@
         },
         {
             "file": "app/scripts/collections/CellCollection.js",
-            "line": 152,
+            "line": 151,
             "description": "Get cells which has reversi",
             "itemtype": "method",
             "name": "getCellsPuttingReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color code",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
             "return": {
                 "description": "\n  The list of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
                 "type": "Array"
@@ -480,37 +486,37 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 16,
+            "line": 17,
             "description": "Cells that cpu can put.\nThis is the list of {{#crossLink \"App.CellModel\"}}{{/crossLink}}",
             "type": "Array",
             "itemtype": "property",
             "name": "cells",
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 25,
+            "line": 26,
             "description": "The reversi color.",
             "type": "String",
             "itemtype": "property",
             "name": "color",
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 33,
+            "line": 34,
             "description": "Cell Collections.",
             "type": "App.CellCollection",
             "itemtype": "property",
             "name": "collection",
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 41,
+            "line": 42,
             "is_constructor": 1,
             "params": [
                 {
@@ -535,12 +541,12 @@
                     ]
                 }
             ],
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 59,
+            "line": 60,
             "description": "Select cells according to the strategies\n    \n    var stragegy = new Strategy({\n        cells: cells,\n        color: color\n    });\n    var cell = strategy.select([\n        strategy.mostReversable,\n        strategy.edge\n    ]);",
             "itemtype": "method",
             "name": "select",
@@ -555,52 +561,52 @@
                 "description": "",
                 "type": "App.CellModel"
             },
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 106,
+            "line": 105,
             "description": "Choose cells which is not placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
             "itemtype": "method",
             "name": "notEdge",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 120,
+            "line": 119,
             "description": "Choose cells which is placed at edge.\nSee {{#crossLink \"App.CellModel/isEdge:method\"}}",
             "itemtype": "method",
             "name": "edge",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 134,
+            "line": 133,
             "description": "Choose cells which is placed at corner.\nSee {{#crossLink \"App.CellModel/isCorner:method\"}}",
             "itemtype": "method",
             "name": "corner",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 148,
+            "line": 147,
             "description": "Choose cells which is placed around corner.\nSee {{#crossLink \"App.CellModel/isAroundCorner:method\"}}",
             "itemtype": "method",
             "name": "aroundCorner",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 162,
+            "line": 161,
             "description": "Create reversi map.\n\n以下の様なObjectを返す。\n- key: オセロを裏返す数\n- value: CellModelの配列",
             "access": "private",
             "tagname": "",
@@ -610,42 +616,42 @@
                 "description": "",
                 "type": "Object"
             },
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 186,
+            "line": 185,
             "description": "Choose most reversiable cells",
             "itemtype": "method",
             "name": "mostReversable",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 200,
+            "line": 199,
             "description": "Choose most reversiable cells",
             "itemtype": "method",
             "name": "leastReversable",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 214,
+            "line": 213,
             "description": "Choose start position cell.\nSee {{#crossLink \"App.CellModel/isStarPosition:method\"}}",
             "itemtype": "method",
             "name": "starPosition",
             "chainable": 1,
-            "class": "App.Strategy",
-            "namespace": "App"
+            "class": "App.CPUStrategy.Strategy",
+            "namespace": "App.CPUStrategy"
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 236,
+            "line": 235,
             "is_constructor": 1,
             "params": [
                 {
@@ -664,20 +670,20 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 245,
+            "line": 244,
             "description": "Select cell which CPU put reversi\n\n__caution__: This method should be implemented in the child class.",
             "itemtype": "method",
             "name": "selectCell",
             "params": [
                 {
-                    "name": "color!~YUIDOC_LINE~!",
-                    "description": "The color code of CPU's reversi.",
-                    "type": "String"
-                },
-                {
                     "name": "cells!~YUIDOC_LINE~!",
                     "description": "The list of App.CellModel\n  which CPU can put reversi.",
                     "type": "Array"
+                },
+                {
+                    "name": "color!~YUIDOC_LINE~!",
+                    "description": "The color code of CPU's reversi.",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -689,7 +695,7 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 264,
+            "line": 263,
             "description": "Put reversi",
             "itemtype": "method",
             "name": "putReversi",
@@ -709,20 +715,20 @@
         },
         {
             "file": "app/scripts/models/CPUStrategy/StrategyModel.js",
-            "line": 285,
-            "description": "Create new stragety.\n    \n    var strategy = this.strategy;\n    var cell = strategy.select([\n        strategy.edge,\n        strategy.mostReversable\n    ]);",
+            "line": 284,
+            "description": "Create new stragety.\n    \n    var strategy = this.strategy;\n    var cell = strategy.select([\n        strategy.mostReversable,\n        strategy.edge\n    ]);\n    \nSee {{#crossLink \"Strategy\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "stragegy",
             "params": [
                 {
-                    "name": "color!~YUIDOC_LINE~!",
-                    "description": "The color code of CPU's reversi.",
-                    "type": "String"
-                },
-                {
                     "name": "cells!~YUIDOC_LINE~!",
                     "description": "The list of App.CellModel\n  which CPU can put reversi.",
                     "type": "Array"
+                },
+                {
+                    "name": "color!~YUIDOC_LINE~!",
+                    "description": "The color code of CPU's reversi.",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -958,6 +964,14 @@
             "description": "Return true if this cell has reversi.",
             "itemtype": "method",
             "name": "hasReversi",
+            "params": [
+                {
+                    "name": "color",
+                    "description": "Color code",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
             "return": {
                 "description": "",
                 "type": "Boolean"
@@ -967,7 +981,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 122,
+            "line": 123,
             "description": "Return this cell's row and col data.\n\n    var cell = this.collection.search(3, 5);\n    var point = cell.getPoint();\n    point[0]; // 3\n    point[1]; // 5\n\n    var point = cell.getPoint(true);\n    point.row; // 3\n    point.col; // 5",
             "itemtype": "method",
             "name": "getPoint",
@@ -987,7 +1001,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 145,
+            "line": 146,
             "description": "Return this cell's reversi color.",
             "itemtype": "method",
             "name": "getColor",
@@ -1000,7 +1014,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 155,
+            "line": 156,
             "description": "Reverse other reversi",
             "access": "private",
             "tagname": "",
@@ -1022,7 +1036,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 185,
+            "line": 186,
             "description": "裏返せるオセロの数を返す",
             "itemtype": "method",
             "name": "countReverse",
@@ -1042,7 +1056,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 212,
+            "line": 213,
             "description": "Return true if we cann put reversi on this cell.",
             "itemtype": "method",
             "name": "canPutReversi",
@@ -1062,7 +1076,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 223,
+            "line": 224,
             "description": "渡されたcellの位置からvector方向へ\n裏返せるオセロがいくつあるか調べる",
             "access": "private",
             "tagname": "",
@@ -1099,7 +1113,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 265,
+            "line": 266,
             "description": "渡されたcellの位置からvector方向へ\n裏返しを行う",
             "access": "private",
             "tagname": "",
@@ -1133,7 +1147,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 293,
+            "line": 294,
             "description": "Return true if this cell can put this color reversi.",
             "itemtype": "method",
             "name": "isCandidate",
@@ -1153,7 +1167,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 305,
+            "line": 306,
             "description": "Return true if this cell is placed at edge.\nEdge position is below 'x' marked position.\n\n     -----------------------\n    | x | x | x | x | x | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x | x | x | x | x | x |\n     -----------------------",
             "itemtype": "method",
             "name": "isEdge",
@@ -1166,7 +1180,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 335,
+            "line": 336,
             "description": "Return true if this cell is placed at corner.\nCorner position is below 'x' marked position.\n\n     -----------------------\n    | x |   |   |   |   | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x |   |   |   |   | x |\n     -----------------------",
             "itemtype": "method",
             "name": "isCorner",
@@ -1179,7 +1193,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 364,
+            "line": 365,
             "description": "Return true if this cell is placesd at around corner.\nAround corner position is below 'x' marked position.\n\n     -----------------------\n    |   | x |   |   | x |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   | x |   |   | x |   |\n     -----------------------",
             "itemtype": "method",
             "name": "isAroundCorner",
@@ -1192,7 +1206,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 406,
+            "line": 407,
             "description": "Return true if this cell is placesd at diagonal corner.\nStart position is below 'x' marked position.\n\n     -----------------------\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n     -----------------------",
             "itemtype": "method",
             "name": "isStarPosition",
@@ -1205,7 +1219,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 435,
+            "line": 436,
             "description": "Return this cell's (row, col)\n\n    var cell = this.collection.search(3, 5);\n    cell.toString() // '(row, col) = (3, 5)'",
             "itemtype": "method",
             "name": "toString",
@@ -1394,7 +1408,7 @@
     "warnings": [
         {
             "message": "unknown tag: reutrn",
-            "line": " app/scripts/models/CellModel.js:265"
+            "line": " app/scripts/models/CellModel.js:266"
         },
         {
             "message": "Missing item type",
@@ -1402,11 +1416,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:41"
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:42"
         },
         {
             "message": "Missing item type",
-            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:236"
+            "line": " app/scripts/models/CPUStrategy/StrategyModel.js:235"
         },
         {
             "message": "Missing item type\nLevels for this CPU",

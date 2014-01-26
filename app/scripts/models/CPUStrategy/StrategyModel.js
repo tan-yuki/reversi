@@ -6,12 +6,13 @@
     App.CPUStrategy = {};
 
     /**
-     * @private
-     * @namespace App
+     * This class can only create instance in
+     * {{#crossLink "App.CPUStrategy.StrategyModel/strategy:method"}}{{/crossLink}}
+     * 
      * @class Strategy
      * @extends Backbone.Model
      */
-    App.Strategy = Backbone.Model.extend({
+    var StrategyModel = Backbone.Model.extend({
 
         /**
          * Cells that cpu can put.
@@ -85,11 +86,9 @@
 
                     // Execute strategy
                     var s = strategies[i];
-                    s = _.bind(s, {
-                        cells:      cells,
-                        color:      this.color,
-                        collection: this.collection,
-                    })();
+                    s = _.bind(s, _.extend(this, {
+                        cells: cells,
+                    }))();
 
                     // Get result
                     var newCells = s.cells;
@@ -205,7 +204,7 @@
          */
         leastReversable: function() {
             var map = this._createReversiMap();
-            var index = _.max(_.keys(map));
+            var index = _.min(_.keys(map));
 
             this.cells = map[index];
             return this;
@@ -248,16 +247,16 @@
          * __caution__: This method should be implemented in the child class.
          * 
          * @method selectCell
-         * @param {String} color
-         *   The color code of CPU's reversi.
          * @param {Array} cells
          *   The list of App.CellModel
          *   which CPU can put reversi.
+         * @param {String} color
+         *   The color code of CPU's reversi.
          * 
          * @return {App.CellModel}
          *   The cell CPU put reversi.
          */
-        selectCell: function(color, cells) {
+        selectCell: function(cells, color) {
             throw 'Not implements selectCell';
         },
 
@@ -274,7 +273,7 @@
                 return false;
             }
 
-            var cell = this.selectCell(color, cells);
+            var cell = this.selectCell(cells, color);
             if (!cell) {
                 return false;
             }
@@ -287,20 +286,22 @@
          *     
          *     var strategy = this.strategy;
          *     var cell = strategy.select([
-         *         strategy.edge,
-         *         strategy.mostReversable
+         *         strategy.mostReversable,
+         *         strategy.edge
          *     ]);
          *     
+         * See {{#crossLink "Strategy"}}{{/crossLink}}
+         * 
          * @method stragegy
-         * @param {String} color
-         *   The color code of CPU's reversi.
          * @param {Array} cells
          *   The list of App.CellModel
          *   which CPU can put reversi.
+         * @param {String} color
+         *   The color code of CPU's reversi.
          * @return {Strategy}
          */
-        strategy: function(color, cells) {
-            return new Strategy({
+        strategy: function(cells, color) {
+            return new StrategyModel({
                 collection: this.collection,
                 cells: cells,
                 color: color

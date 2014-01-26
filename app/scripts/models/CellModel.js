@@ -113,10 +113,11 @@
          * Return true if this cell has reversi.
          * 
          * @method hasReversi
+         * @param {String} [color] Color code
          * @return {Boolean}
          */
-        hasReversi: function() {
-            return this.reversi.hasColor();
+        hasReversi: function(color) {
+            return this.reversi.hasColor(color);
         },
 
         /**

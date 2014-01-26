@@ -3,11 +3,11 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "App.CPUModel",
         "App.CPUStrategy.EasyStrategyModel",
+        "App.CPUStrategy.Strategy",
         "App.CPUStrategy.StrategyModel",
         "App.CellCollection",
         "App.CellModel",
-        "App.ReversiModel",
-        "App.Strategy"
+        "App.ReversiModel"
     ],
     "modules": [
         "App",

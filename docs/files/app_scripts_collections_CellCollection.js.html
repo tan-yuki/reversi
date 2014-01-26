@@ -49,11 +49,11 @@
             
                 <li><a href="../classes/App.CPUStrategy.EasyStrategyModel.html">App.CPUStrategy.EasyStrategyModel</a></li>
             
+                <li><a href="../classes/App.CPUStrategy.Strategy.html">App.CPUStrategy.Strategy</a></li>
+            
                 <li><a href="../classes/App.CPUStrategy.StrategyModel.html">App.CPUStrategy.StrategyModel</a></li>
             
                 <li><a href="../classes/App.ReversiModel.html">App.ReversiModel</a></li>
-            
-                <li><a href="../classes/App.Strategy.html">App.Strategy</a></li>
             
             </ul>
 
@@ -146,7 +146,6 @@
                 }
             }
             this.reset(models, _.extend({silent: true}, options));
-            this.setInitialReversi();
         },
 
         /**
@@ -257,12 +256,13 @@
          * Get cells which has reversi
          *
          * @method getCellsPuttingReversi
+         * @param {String} [color] Color code
          * @return {Array}
          *   The list of {{#crossLink &quot;App.CellModel&quot;}}{{/crossLink}}
          */
-        getCellsPuttingReversi: function() {
+        getCellsPuttingReversi: function(color) {
             return this.filter(function(model) {
-                return model.hasReversi();
+                return model.hasReversi(color);
             });
         },
 
