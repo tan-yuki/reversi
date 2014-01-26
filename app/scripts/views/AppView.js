@@ -8,7 +8,7 @@
 
         render: function() {
             this.boardView = new App.BoardView({
-                edge: 8
+                edge: 6
             });
             this.$('#board').append(this.boardView.render().$el);
 

@@ -8,6 +8,7 @@
     var playerColor = colorCode.black;
     var cpuColor    = colorCode.white;
 
+    var isAction = false;
 
     App.CellView = Backbone.View.extend({
         tagName: 'td',
@@ -41,29 +42,35 @@
 
         onClick: function(e) {
             e.stopPropagation();
+            if (isAction) {
+                return
+            }
+            isAction = true;
             if (this.isGameEnd) {
                 return;
             }
 
-            this.putReversiByPlayer();
+            if (!this.putReversiByPlayer()) {
+                isAction = false;
+                return;
+            }
             this.putReversiByCPU();
+            isAction = false;
         },
 
         putReversiByPlayer: function() {
             if (this.isGameEnd) {
-                return;
+                return false;
             }
 
             var result = this.model.putReversi(playerColor);
             App.mediator.trigger('cell:render');
 
             if (this.checkGameEnd()) {
-                return;
+                return false;
             }
 
-            if (!result) {
-                this.cannotPutPlayerReversi();
-            }
+            return result;
         },
 
         putReversiByCPU: function() {
