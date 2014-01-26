@@ -41,37 +41,45 @@
 
         onClick: function(e) {
             e.stopPropagation();
-            if (this.checkGameEnd()) {
+            if (this.isGameEnd) {
                 return;
             }
 
-            this.putReversi();
-            App.mediator.trigger('cell:render');
-        },
-
-        putReversi: function() {
-            if (!this.model.putReversi(playerColor)) {
-                return;
-            }
-
-            if (this.checkGameEnd()) {
-                return;
-            }
-
+            this.putReversiByPlayer();
             this.putReversiByCPU();
         },
 
-        putReversiByCPU: function() {
-            if (this.checkGameEnd()) {
-                return false;
-            }
-
-            if (!this.cpu.putReversi(cpuColor)) {
-                this.cannotPutCPUReversi();
+        putReversiByPlayer: function() {
+            if (this.isGameEnd) {
                 return;
             }
 
+            var result = this.model.putReversi(playerColor);
+            App.mediator.trigger('cell:render');
+
             if (this.checkGameEnd()) {
+                return;
+            }
+
+            if (!result) {
+                this.cannotPutPlayerReversi();
+            }
+        },
+
+        putReversiByCPU: function() {
+            if (this.isGameEnd) {
+                return;
+            }
+
+            var result = this.cpu.putReversi(cpuColor);
+            App.mediator.trigger('cell:render');
+
+            if (this.checkGameEnd()) {
+                return;
+            }
+
+            if (!result) {
+                this.cannotPutCPUReversi();
                 return;
             }
 
@@ -90,15 +98,33 @@
                 return true;
             }
 
-            if (collection.isFullReversi() || collection.isOnlyColor()) {
-                this.finishGame();
-                this.isGameEnd = true;
+            if (collection.isFullReversi()) {
+                this.finishGame('ゲームが終了しました。');
                 return true;
             }
+
+            if (collection.isOnlyColor()) {
+                this.finishGame('オセロが一色のみになったのでゲームを終了します。');
+                return true;
+            }
+
+            var candidatesCount =
+                collection.countCandidates(playerColor) +
+                collection.countCandidates(cpuColor);
+
+            if (!candidatesCount) {
+                this.finishGame('両方のオセロが置けなくなったのでゲームを終了します。');
+                return true;
+            }
+
             return false;
         },
 
-        finishGame: function() {
+        finishGame: function(additionalMsg) {
+            if (!additionalMsg) {
+                additionalMsg = '';
+            }
+            this.isGameEnd = true;
 
             var collection = this.model.collection;
             var playerCount = collection.countReversies(playerColor);
@@ -109,32 +135,11 @@
                          '引き分けです。';
 
             var msg =
-                'ゲームが終了しました。\n' +
                 'あなた: ' + playerCount + '\n' +
                 'CPU:    ' + cpuCount + '\n' +
                 result;
-            App.alert(msg);
-        },
 
-        cannotContinueGame: function() {
-            var collection = this.model.collection;
-            var endGame = function(result) {
-                var msg =
-                    'オセロが一色のみになったのでゲームを終了します。\n' +
-                    result;
-                App.alert(msg);
-                return true;
-            };
-
-            if (collection.isOnly(cpuColor)) {
-                endGame('あなたの勝ちです。');
-                return true;
-            }
-            if (collection.isOnly(playerColor)) {
-                endGame('あなたの負けです。');
-                return true;
-            }
-            return false;
+            App.alert(additionalMsg + '\n' + msg);
         },
 
         cannotPutPlayerReversi: function() {
@@ -145,7 +150,7 @@
 
         cannotPutCPUReversi: function() {
             if (!this.isGameEnd) {
-                All.alert('CPUのオセロが置けません。あなたの番です。');
+                App.alert('CPUのオセロが置けません。あなたの番です。');
             }
         },
 
