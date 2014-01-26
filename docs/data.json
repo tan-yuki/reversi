@@ -1148,14 +1148,14 @@
         {
             "file": "app/scripts/models/CellModel.js",
             "line": 294,
-            "description": "Return true if this cell can put this color reversi.",
+            "description": "Return true if this cell is the same  arguments one.",
             "itemtype": "method",
-            "name": "isCandidate",
+            "name": "isEquals",
             "params": [
                 {
-                    "name": "color",
+                    "name": "cell",
                     "description": "",
-                    "type": "String"
+                    "type": "App.CellModel"
                 }
             ],
             "return": {
@@ -1167,7 +1167,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 306,
+            "line": 305,
             "description": "Return true if this cell is placed at edge.\nEdge position is below 'x' marked position.\n\n     -----------------------\n    | x | x | x | x | x | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x |   |   |   |   | x |\n    |-----------------------|\n    | x | x | x | x | x | x |\n     -----------------------",
             "itemtype": "method",
             "name": "isEdge",
@@ -1180,7 +1180,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 336,
+            "line": 335,
             "description": "Return true if this cell is placed at corner.\nCorner position is below 'x' marked position.\n\n     -----------------------\n    | x |   |   |   |   | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x |   |   |   |   | x |\n     -----------------------",
             "itemtype": "method",
             "name": "isCorner",
@@ -1193,7 +1193,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 365,
+            "line": 364,
             "description": "Return true if this cell is placesd at around corner.\nAround corner position is below 'x' marked position.\n\n     -----------------------\n    |   | x |   |   | x |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    | x | x |   |   | x | x |\n    |-----------------------|\n    |   | x |   |   | x |   |\n     -----------------------",
             "itemtype": "method",
             "name": "isAroundCorner",
@@ -1206,7 +1206,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 407,
+            "line": 406,
             "description": "Return true if this cell is placesd at diagonal corner.\nStart position is below 'x' marked position.\n\n     -----------------------\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n    |-----------------------|\n    |   | x |   |   | x |   |\n    |-----------------------|\n    |   |   |   |   |   |   |\n     -----------------------",
             "itemtype": "method",
             "name": "isStarPosition",
@@ -1219,7 +1219,7 @@
         },
         {
             "file": "app/scripts/models/CellModel.js",
-            "line": 436,
+            "line": 435,
             "description": "Return this cell's (row, col)\n\n    var cell = this.collection.search(3, 5);\n    cell.toString() // '(row, col) = (3, 5)'",
             "itemtype": "method",
             "name": "toString",

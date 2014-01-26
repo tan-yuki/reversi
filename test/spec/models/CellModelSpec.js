@@ -185,29 +185,5 @@
                 expect(collection.search(3, 2).isAroundCorner()).to.be.false;
             });
         });
-
-        describe('#isCandidate', function() {
-            before(function() {
-                // Initialize
-                collection = new App.CellCollection(false, {
-                    edge: 8
-                });
-                collection.setInitialReversi();
-            });
-
-            it('should return true if this cell can put this color\'s reversi', function() {
-                expect(collection.search(2, 4).isCandidate(black)).to.be.true;
-                expect(collection.search(4, 2).isCandidate(black)).to.be.true;
-                expect(collection.search(3, 5).isCandidate(black)).to.be.true;
-                expect(collection.search(5, 3).isCandidate(black)).to.be.true;
-            });
-
-            it('should return false if this cell can\'t put this color\'s reversi', function() {
-                expect(collection.search(2, 5).isCandidate(black)).to.be.false;
-                expect(collection.search(4, 3).isCandidate(black)).to.be.false;
-                expect(collection.search(3, 6).isCandidate(black)).to.be.false;
-                expect(collection.search(5, 4).isCandidate(black)).to.be.false;
-            });
-        });
     });
 })();

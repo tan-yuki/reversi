@@ -292,15 +292,14 @@
         },
 
         /**
-         * Return true if this cell can put this color reversi.
+         * Return true if this cell is the same  arguments one.
          * 
-         * @method isCandidate
-         * @param {String} color
+         * @method isEquals
+         * @param {App.CellModel} cell
          * @return {Boolean}
          */
-        isCandidate: function(color) {
-            var cells = this.collection.getCandidates(color);
-            return _.indexOf(cells, this) > -1;
+        isEquals: function(cell) {
+            return cell.row === this.row && cell.col === this.col;
         },
 
         /**

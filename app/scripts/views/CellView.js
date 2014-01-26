@@ -158,7 +158,7 @@
             this.$el.empty();
             this.$el.append(this.reversiView.render().el);
 
-            if (this.model.isCandidate(playerColor)) {
+            if (this.model.canPutReversi(playerColor)) {
                 this.$el.append('<div class="candidate"></div>');
             }
 
