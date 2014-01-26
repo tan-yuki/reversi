@@ -1,7 +1,7 @@
 {
   "name": "reversi-with-backbone",
   "description": "Reversi game built with Backbone javascript framework",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://github.com/tan-yuki/reversi",
   "dependencies": {
     "gzippo": "~0.2.0",
