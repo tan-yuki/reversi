@@ -1,4 +1,4 @@
 reversi
 =======
 
-http://reversi-with-backbone.herokuapp.com/
+http://tan-yuki.github.io/reversi/dist
